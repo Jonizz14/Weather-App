@@ -47,6 +47,12 @@
   line-height: 1;
   margin: 0;
   color: white;
+  background: linear-gradient(45deg, #ffffff, #e0e7ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
 .condition {
@@ -88,6 +94,15 @@
 
   .weather-icon {
     font-size: 3rem;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
   }
 }
 

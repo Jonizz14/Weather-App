@@ -9,32 +9,6 @@ const RightPanel = ({ weather }) => {
 
   return (
     <>
-      <div className="weather-card glass-card map-widget">
-        <div className="card-header">
-          <div className="card-icon">🗺️</div>
-          <h4>Xarita</h4>
-        </div>
-        <Map
-          center={{ lat: weather.coord.lat, lng: weather.coord.lon }}
-          zoom={10}
-          markers={[{
-            position: { lat: weather.coord.lat, lng: weather.coord.lon },
-            title: `${weather.name}, ${weather.sys.country}`,
-            icon: {
-              url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-                <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="20" cy="20" r="18" fill="#4A90E2" stroke="white" stroke-width="3"/>
-                  <text x="20" y="25" text-anchor="middle" fill="white" font-size="12" font-weight="bold">${Math.round(weather.main.temp)}°</text>
-                </svg>
-              `)
-            }
-          }]}
-        />
-        <div className="map-info">
-          <div className="city-name">{weather.name}, {weather.sys.country}</div>
-          <div className="coordinates">{weather.coord.lat.toFixed(4)}, {weather.coord.lon.toFixed(4)}</div>
-        </div>
-      </div>
 
       <div className="weather-card glass-card">
         <div className="card-icon">☀️</div>
@@ -108,27 +82,6 @@ const RightPanel = ({ weather }) => {
         </div>
       </div>
 
-      <div className="weather-card glass-card nearby-cities">
-        <div className="card-icon">🏙️</div>
-        <h4>Yaqin Shaharlar</h4>
-        <div className="nearby-list">
-          <div className="nearby-city">
-            <span className="city-name">Samarqand</span>
-            <span className="distance">~300 km</span>
-            <span className="temp">18°</span>
-          </div>
-          <div className="nearby-city">
-            <span className="city-name">Buxoro</span>
-            <span className="distance">~450 km</span>
-            <span className="temp">20°</span>
-          </div>
-          <div className="nearby-city">
-            <span className="city-name">Andijon</span>
-            <span className="distance">~280 km</span>
-            <span className="temp">16°</span>
-          </div>
-        </div>
-      </div>
     </>
   );
 };

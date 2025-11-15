@@ -6,6 +6,7 @@ const MapComponent = ({ center, zoom, markers }) => {
   const ref = useRef();
 
   useEffect(() => {
+    console.log('window.google defined:', !!window.google);
     if (ref.current) {
       const map = new window.google.maps.Map(ref.current, {
         center,
@@ -198,18 +199,23 @@ const MapComponent = ({ center, zoom, markers }) => {
 };
 
 const render = (status) => {
+  console.log('Google Maps status:', status);
   switch (status) {
     case Status.LOADING:
+      console.log('Google Maps loading...');
       return <div className="map-loading">Xarita yuklanmoqda...</div>;
     case Status.FAILURE:
+      console.log('Google Maps failed to load');
       return <div className="map-error">Xaritani yuklashda xatolik yuz berdi</div>;
     case Status.SUCCESS:
+      console.log('Google Maps loaded successfully');
       return <MapComponent />;
   }
 };
 
 export default function Map({ center, zoom = 10, markers = [] }) {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'YOUR_API_KEY_HERE';
+  console.log('Google Maps API Key:', apiKey ? 'Set' : 'Not set (using default)');
 
   return (
     <Wrapper apiKey={apiKey} render={render}>

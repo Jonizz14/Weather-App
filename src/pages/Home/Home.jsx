@@ -1,4 +1,4 @@
-itimport React, { useState } from "react";
+import React, { useState } from "react";
 import useWeather from "../../hooks/useWeather";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
@@ -13,29 +13,27 @@ import "./Home.css";
 
 export default function Home() {
   const { weather, forecast, loading, error, getWeather } = useWeather();
-  const [savedCities, setSavedCities] = useState([]);
+  const [searchedCities, setSearchedCities] = useState([]);
+
+  // Load searched cities from localStorage on mount
+  React.useEffect(() => {
+    const stored = localStorage.getItem('searchedCities');
+    if (stored) {
+      setSearchedCities(JSON.parse(stored));
+    }
+  }, []);
 
   const handleSearch = async (city) => {
     await getWeather(city);
+    // Add to searched cities
+    setSearchedCities(prev => {
+      const filtered = prev.filter(c => c.toLowerCase() !== city.toLowerCase());
+      const updated = [city, ...filtered].slice(0, 20); // Keep only last 20
+      localStorage.setItem('searchedCities', JSON.stringify(updated));
+      return updated;
+    });
   };
 
-  // Update saved cities when weather data changes
-  React.useEffect(() => {
-    if (weather) {
-      setSavedCities(prev => {
-        const existingIndex = prev.findIndex(c => c.name.toLowerCase() === weather.name.toLowerCase());
-        if (existingIndex >= 0) {
-          // Update existing
-          const updated = [...prev];
-          updated[existingIndex] = { name: weather.name, weather, forecast };
-          return updated;
-        } else {
-          // Add new
-          return [...prev, { name: weather.name, weather, forecast }];
-        }
-      });
-    }
-  }, [weather, forecast]);
 
   const handleCityClick = (cityName) => {
     getWeather(cityName);
@@ -43,11 +41,8 @@ export default function Home() {
 
   return (
     <div className="home">
+      <LeftSidebar onSearch={handleSearch} searchedCities={searchedCities} onCityClick={handleCityClick} />
       <main className="main-content">
-        {/* Prominent Search Bar */}
-        <section className="search-section">
-          <SearchBar onSearch={handleSearch} />
-        </section>
 
         {loading && <Loader />}
         {error && <ErrorMessage message={error} onRetry={() => getWeather("")} />}

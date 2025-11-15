@@ -15,31 +15,34 @@
   margin-bottom: 2rem;
 }
 
-.saved-cities {
+.searched-cities {
   margin-top: 2rem;
 }
 
-.city-item {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem;
+.searched-cities h3 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.searched-city-item {
+  padding: 0.5rem 0.75rem;
   margin-bottom: 0.5rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease;
-}
-
-.city-item:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.city-name {
   color: white;
   font-weight: 500;
 }
 
-.weather-icon {
-  margin-right: 0.5rem;
-  font-size: 1.2rem;
+.searched-city-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.no-searches {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
 }

@@ -6,6 +6,7 @@
   background-attachment: fixed;
   position: relative;
   overflow-x: hidden;
+  display: flex;
 }
 
 .home::before {
@@ -26,11 +27,11 @@
   position: relative;
   z-index: 1;
   padding: 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  overflow-y: auto;
 }
 
 /* Prominent Search Section */

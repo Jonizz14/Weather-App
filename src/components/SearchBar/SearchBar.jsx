@@ -3,33 +3,8 @@ import './SearchBar.css'
 
 export default function SearchBar({ onSearch }) {
   const [city, setCity] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
   const [currentLocation, setCurrentLocation] = useState(null);
 
-  // Popular cities in Uzbekistan and nearby countries
-  const popularCities = [
-    { name: "Toshkent", country: "O'zbekiston" },
-    { name: "Samarqand", country: "O'zbekiston" },
-    { name: "Buxoro", country: "O'zbekiston" },
-    { name: "Andijon", country: "O'zbekiston" },
-    { name: "Namangan", country: "O'zbekiston" },
-    { name: "Farg'ona", country: "O'zbekiston" },
-    { name: "Jizzax", country: "O'zbekiston" },
-    { name: "Guliston", country: "O'zbekiston" },
-    { name: "Navoiy", country: "O'zbekiston" },
-    { name: "Qarshi", country: "O'zbekiston" },
-    { name: "Nukus", country: "O'zbekiston" },
-    { name: "Termiz", country: "O'zbekiston" },
-    { name: "Urganch", country: "O'zbekiston" },
-    { name: "Moscow", country: "Rossiya" },
-    { name: "St. Petersburg", country: "Rossiya" },
-    { name: "Almaty", country: "Qozog'iston" },
-    { name: "Astana", country: "Qozog'iston" },
-    { name: "Bishkek", country: "Qirg'iziston" },
-    { name: "Dushanbe", country: "Tojikiston" },
-    { name: "Ashgabat", country: "Turkmaniston" }
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,24 +18,9 @@ export default function SearchBar({ onSearch }) {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setCity(value);
-
-    if (value.length > 0) {
-      const filtered = popularCities.filter(item =>
-        item.name.toLowerCase().includes(value.toLowerCase()) ||
-        item.country.toLowerCase().includes(value.toLowerCase())
-      );
-      setSuggestions(filtered.slice(0, 5));
-      setShowSuggestions(true);
-    } else {
-      setShowSuggestions(false);
-    }
-  };
-
-  const handleSuggestionClick = (suggestion) => {
-    setCity(suggestion.name);
-    onSearch(suggestion.name);
     setShowSuggestions(false);
   };
+
 
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
@@ -100,8 +60,6 @@ export default function SearchBar({ onSearch }) {
             placeholder="Shahar nomini kiriting yoki joylashuvni aniqlang..."
             value={city}
             onChange={handleInputChange}
-            onFocus={() => city && setShowSuggestions(true)}
-            onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
           />
 
           <button
@@ -116,20 +74,6 @@ export default function SearchBar({ onSearch }) {
           </button>
         </div>
 
-        {showSuggestions && suggestions.length > 0 && (
-          <div className="search-suggestions">
-            {suggestions.map((suggestion, index) => (
-              <div
-                key={index}
-                className="suggestion-item"
-                onClick={() => handleSuggestionClick(suggestion)}
-              >
-                <div className="suggestion-name">{suggestion.name}</div>
-                <div className="suggestion-country">{suggestion.country}</div>
-              </div>
-            ))}
-          </div>
-        )}
       </form>
 
       {currentLocation && (

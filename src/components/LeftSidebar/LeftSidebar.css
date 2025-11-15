@@ -1,3 +1,4 @@
+/* === Asosiy (Desktop > 1024px) Uslublar === */
 .left-sidebar {
   position: fixed;
   top: 0;
@@ -13,7 +14,26 @@
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
   z-index: 100;
   overflow-y: auto;
+  transition: transform 0.3s ease;
+  transform: translateX(0); /* MUHIM: Kompyuterda doim ochiq */
 }
+
+.sidebar-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none; /* MUHIM: Kompyuterda yopish tugmasi yo'q */
+  z-index: 10;
+}
+
+/* MUHIM O'ZGARISH: .closed uslubi media so'rov ICHIGA ko'chirildi.
+  Endi u faqat kichik ekranlarda ishlaydi.
+*/
 
 .sidebar-content {
   display: flex;
@@ -21,6 +41,7 @@
   gap: 1.5rem;
 }
 
+/* ... (sizning .searched-cities, .city-item va boshqa uslublaringiz o'zgarishsiz qoladi) ... */
 .searched-cities-header h3 {
   font-size: 1.2rem;
   font-weight: 600;
@@ -107,20 +128,41 @@
 .left-sidebar::-webkit-scrollbar {
   width: 8px;
 }
-
 .left-sidebar::-webkit-scrollbar-track {
   background: transparent;
 }
-
 .left-sidebar::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
 }
 
+/* === 1. Planshet (Tablet) uchun Responsive === */
+@media (max-width: 1024px) {
+  .left-sidebar {
+    width: 320px;
+    z-index: 200; /* Boshqa elementlardan yuqorida turishi uchun */
+  }
+
+  /* MUHIM: Endi .closed faqat shu yerda ishlaydi */
+  .left-sidebar.closed {
+    transform: translateX(-100%);
+  }
+
+  .sidebar-close-btn {
+    display: block; /* Yopish tugmasini ko'rsatish */
+  }
+}
+
+/* === 2. Mobil Telefon (Mobile) uchun Responsive === */
 @media (max-width: 768px) {
   .left-sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
+    width: 300px; /* enini biroz kichraytiramiz */
+  }
+}
+
+/* === 3. Kichik Mobil Telefonlar uchun === */
+@media (max-width: 480px) {
+  .left-sidebar {
+    width: 280px; /* yanada kichraytiramiz */
   }
 }

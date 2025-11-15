@@ -64,6 +64,7 @@ Bu loyiha **zamonaviy ob-havo ilovasi** bo'lib, React texnologiyasi asosida quri
 - 📱 **Mobile-First** - Avval mobil, keyin desktop
 - 🎯 **Intuitive Navigation** - Oson va tushunarli
 - ⚡ **Fast Loading** - Tez yuklanish uchun optimizatsiya
+- 📱 **Responsive Components** - Home, Forecast, Map va barcha komponentlar responsive
 
 ---
 
@@ -77,6 +78,7 @@ Bu loyiha **zamonaviy ob-havo ilovasi** bo'lib, React texnologiyasi asosida quri
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![Responsive](https://img.shields.io/badge/Responsive-Design-FF6B6B?style=for-the-badge&logo=responsive&logoColor=white)
 
 </div>
 
@@ -183,15 +185,12 @@ weather-app/
 
 ### 🏠 Asosiy Sahifa
 ![Main Weather Display](https://via.placeholder.com/600x400/4A90E2/FFFFFF?text=Main+Weather+Display)
-*Joriy ob-havo va qidiruv funksiyasi*
 
 ### 📅 Prognoz Sahifasi
 ![Forecast View](https://via.placeholder.com/600x400/50C878/FFFFFF?text=Forecast+View)
-*5 kunlik batafsil prognoz*
 
 ### 🗺️ Xarita Sahifasi
 ![Map View](https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Map+View)
-*Google Maps integratsiyasi*
 
 </div>
 

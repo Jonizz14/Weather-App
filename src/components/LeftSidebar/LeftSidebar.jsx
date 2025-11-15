@@ -5,17 +5,22 @@ import "./LeftSidebar.css";
 
 const LeftSidebar = ({
   onSearch,
+  onLocation,
   searchedCities,
   onCityClick,
   onDeleteCity,
   onClearAllCities,
+  onClose,
+  className,
 }) => {
   return (
-    <aside className="left-sidebar">
-      {" "}
+    <aside className={`left-sidebar ${className || ''}`}>
+      <button className="sidebar-close-btn" onClick={onClose}>
+        <FiX />
+      </button>
       <div className="sidebar-content">
         {" "}
-        <SearchBar onSearch={onSearch} />{" "}
+        <SearchBar onSearch={onSearch} onLocation={onLocation} />{" "}
         <div className="searched-cities">
           {" "}
           <div className="searched-cities-header">

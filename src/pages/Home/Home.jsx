@@ -3,7 +3,6 @@ import useWeather from "../../hooks/useWeather";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
 import ForecastList from "../../components/ForecastList/ForecastList";
-import DailyForecast from "../../components/DailyForecast/DailyForecast";
 import RightPanel from "../../components/RightPanel/RightPanel";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -11,9 +10,9 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import "./Home.css";
 
 export default function Home() {
-  const { weather, forecast, loading, error, getWeather } = useWeather();
+  const { weather, forecast, loading, error, locationError, getWeather, getWeatherByCoords, retryLocation } = useWeather();
   const [searchedCities, setSearchedCities] = useState([]);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 1024);
 
   // Load searched cities from localStorage on mount
   React.useEffect(() => {
@@ -72,8 +71,9 @@ export default function Home() {
 
   return (
     <>
-      <div className="home">
-        {sidebarOpen && <LeftSidebar onSearch={handleSearch} searchedCities={searchedCities} onCityClick={handleCityClick} onDeleteCity={handleDeleteCity} onClearAllCities={handleClearAllCities} />}
+      <div className={`home ${!sidebarOpen ? 'sidebar-closed' : ''}`}>
+        <LeftSidebar className={sidebarOpen ? 'open' : 'closed'} onSearch={handleSearch} onLocation={getWeatherByCoords} searchedCities={searchedCities} onCityClick={handleCityClick} onDeleteCity={handleDeleteCity} onClearAllCities={handleClearAllCities} onClose={() => setSidebarOpen(false)} />
+        {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)}></div>}
         <main className="main-content">
           <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
             {sidebarOpen ? '◀' : '▶'}
@@ -81,21 +81,27 @@ export default function Home() {
 
         {loading && <Loader />}
         {error && <ErrorMessage message={error} onRetry={() => getWeather("")} />}
+        {locationError && !weather && (
+          <ErrorMessage message={locationError} onRetry={retryLocation} />
+        )}
+        {!weather && !loading && !error && !locationError && (
+          <div className="welcome-message">
+            <h1>Search for a City</h1>
+            <p>Use the search bar above to find weather information for any city</p>
+          </div>
+        )}
         {weather && (
           <>
-            {/* Top Section - Main Weather Overview */}
             <section className="weather-overview">
               <WeatherCard data={weather} />
             </section>
 
-            {/* Middle Section - Hourly Forecast */}
             {forecast && (
               <section className="hourly-forecast-section">
                 <ForecastList forecast={forecast} weather={weather} />
               </section>
             )}
 
-            {/* Bottom Section - Detail Widgets Grid */}
             <section className="detail-widgets">
               <RightPanel weather={weather} />
             </section>

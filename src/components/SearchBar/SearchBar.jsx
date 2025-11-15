@@ -25,16 +25,43 @@ export default function SearchBar({ onSearch }) {
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
+        async (position) => {
           const { latitude, longitude } = position.coords;
           setCurrentLocation({ latitude, longitude });
-          // You would typically reverse geocode here to get city name
-          // For now, we'll just show coordinates
-          console.log(`Location: ${latitude}, ${longitude}`);
+
+          try {
+            // Reverse geocode to get city name
+            const geoResponse = await fetch(
+              `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${import.meta.env.VITE_WEATHER_API_KEY}`
+            );
+            const geoData = await geoResponse.json();
+
+            if (geoData.length > 0) {
+              const cityName = geoData[0].name;
+              onSearch(cityName);
+            } else {
+              alert("Could not find city name for your location");
+            }
+          } catch (error) {
+            console.error("Error reverse geocoding:", error);
+            alert("Error getting city name from location");
+          }
         },
         (error) => {
           console.error("Error getting location:", error);
-          alert("Error getting location");
+          let message = "Error getting location";
+          if (error.code === 1) {
+            message = "Location permission denied. Please allow location access and try again.";
+          } else if (error.code === 2) {
+            message = "Location unavailable. Please check your GPS settings.";
+          } else if (error.code === 3) {
+            message = "Location request timed out. Please try again.";
+          }
+          alert(message);
+        },
+        {
+          timeout: 15000,
+          enableHighAccuracy: true
         }
       );
     } else {

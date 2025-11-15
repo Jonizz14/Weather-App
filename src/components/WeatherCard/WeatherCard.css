@@ -33,7 +33,7 @@
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.6);
   margin-top: 0.5rem;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
 }
 
 .weather-icon {
@@ -75,6 +75,10 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .weather-card {
+    max-width: 100%;
+  }
+
   .location {
     font-size: 1.5rem;
   }
@@ -97,7 +101,8 @@
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
   }
   to {
-    text-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.8),
+      0 0 60px rgba(255, 255, 255, 0.6);
   }
 }
 
@@ -117,5 +122,58 @@
 
   .location {
     font-size: 1.2rem;
+  }
+}
+
+/* ... (Asosiy uslublaringiz o'zgarishsiz qoladi) ... */
+
+/* Responsive */
+@media (max-width: 768px) {
+  .weather-card {
+    max-width: 100%;
+  }
+
+  .location {
+    font-size: 1.5rem;
+  }
+
+  .temperature {
+    font-size: 4rem;
+  }
+
+  .condition {
+    font-size: 1.2rem;
+  }
+
+  .high-low {
+    font-size: 1rem;
+  }
+
+  .coordinates {
+    font-size: 0.8rem;
+  }
+
+  .weather-icon svg {
+    width: 60px !important;
+    height: 60px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .location {
+    font-size: 1.3rem;
+  }
+
+  .temperature {
+    font-size: 3rem;
+  }
+
+  .weather-icon svg {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .high-low {
+    font-size: 0.9rem;
   }
 }

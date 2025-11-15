@@ -27,3 +27,36 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .loader {
+    height: 150px;
+    gap: 0.75rem;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+  }
+
+  .loading-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .loader {
+    height: 120px;
+    gap: 0.5rem;
+  }
+
+  .spinner {
+    width: 30px;
+    height: 30px;
+  }
+
+  .loading-text {
+    font-size: 0.9rem;
+  }
+}

@@ -136,3 +136,35 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width: 480px) {
+  .weather-card {
+    min-height: 100px;
+    padding: 0.5rem;
+  }
+
+  .card-icon {
+    font-size: 1.2rem;
+  }
+
+  .weather-card h4 {
+    font-size: 0.8rem;
+  }
+
+  .weather-card .uv-value,
+  .weather-card .sun-value,
+  .weather-card .moon-value,
+  .weather-card .precip-value,
+  .weather-card .humidity-value,
+  .weather-card .wind-speed,
+  .weather-card .visibility-value,
+  .weather-card .pressure-value,
+  .weather-card .feels-temp {
+    font-size: 0.9rem;
+  }
+
+  .dew-point,
+  .wind-direction {
+    font-size: 0.8rem;
+  }
+}

@@ -1,5 +1,3 @@
-/* Home Page Styles - Apple Weather Inspired */
-
 .home {
   min-height: 100vh;
   background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
@@ -28,13 +26,29 @@
   position: relative;
   z-index: 1;
   padding: 2rem;
-  padding-top: 20px; /* reduced since no header */
-  padding-left: 420px; /* sidebar width 400px + padding 20px */
-  padding-bottom: 20px; /* reduced since no footer */
+  padding-top: 20px;
+  padding-left: 420px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   min-height: 100vh;
+  transition: padding-left 0.3s ease;
+}
+
+.home.sidebar-closed .main-content {
+  padding-left: 2rem;
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 150;
+  display: none;
 }
 
 .sidebar-toggle {
@@ -51,12 +65,27 @@
   font-size: 1.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  z-index: 100;
+  z-index: 150;
   backdrop-filter: blur(10px);
 }
 
+.home.sidebar-closed .sidebar-toggle {
+  left: 10px;
+}
 
-/* Prominent Search Section */
+@media (max-width: 768px) {
+  .sidebar-backdrop {
+    display: block;
+  }
+
+  .sidebar-toggle {
+    top: 20px;
+    left: 20px;
+    transform: none;
+  }
+}
+
+
 .search-section {
   display: flex;
   justify-content: center;
@@ -69,7 +98,6 @@
   width: 100%;
 }
 
-/* Three main sections */
 .weather-overview {
   display: flex;
   justify-content: center;
@@ -91,9 +119,46 @@
   gap: 1.5rem;
   padding: 1rem 0;
   animation: fadeInUp 0.8s ease-out 0.4s both;
+  width: 100%;
 }
 
-/* Glassmorphism base styles */
+@media (max-width: 1024px) {
+  .main-content {
+    padding-left: 2rem;
+  }
+
+  .detail-widgets {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .sidebar-toggle {
+    display: block;
+    top: 20px;
+    left: 20px;
+    transform: none;
+  }
+
+  .sidebar-backdrop {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .detail-widgets {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .main-content {
+    padding: 0.75rem;
+  }
+
+  .weather-overview {
+    min-height: 220px;
+  }
+}
+
 .glass-card {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
@@ -107,20 +172,24 @@
 }
 
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .home {
-    flex-direction: column;
-  }
-
-  .left-sidebar {
-    width: 100%;
-    height: auto;
-    padding: 1rem;
+    flex-direction: row;
   }
 
   .main-content {
     padding: 1rem;
+    padding-left: 2rem;
+  }
+
+  .home.sidebar-closed .main-content {
+    padding-left: 2rem;
+  }
+
+  .weather-overview {
+    min-height: auto;
+    padding: 0;
+    width: 100%;
   }
 
   .detail-widgets {
@@ -135,12 +204,20 @@
 }
 
 @media (max-width: 480px) {
+  .weather-overview {
+    min-height: 200px;
+  }
+
   .detail-widgets {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .hourly-forecast-section {
+    padding: 0.5rem 0;
   }
 }
 
-/* Loader positioning */
 .main-content .loader {
   position: absolute;
   top: 50%;
@@ -149,7 +226,60 @@
   z-index: 10;
 }
 
-/* Animations */
+.welcome-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  color: white;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.welcome-message h1 {
+  font-size: 3rem;
+  font-weight: 300;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-message p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin: 0;
+  max-width: 400px;
+}
+
+@media (max-width: 768px) {
+  .welcome-message {
+    min-height: 300px;
+    padding: 2rem 1rem;
+  }
+
+  .welcome-message h1 {
+    font-size: 2.5rem;
+  }
+
+  .welcome-message p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-message h1 {
+    font-size: 2rem;
+  }
+
+  .welcome-message p {
+    font-size: 1rem;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

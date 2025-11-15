@@ -7,6 +7,12 @@ export const fetchWeatherByCity = async (city) => {
     return res.json();
 }
 
+export const fetchWeatherByCoords = async (lat, lon) => {
+    const res = await fetch(`${BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
+    if (!res.ok) throw new Error("Joylashuv bo'yicha ob-havo topilmadi!");
+    return res.json();
+};
+
 export const fetchForecast = async (lat, lon) => {
     const res = await fetch(`${BASE_URL}/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
     if (!res.ok) throw new Error("Prognoz olishda xato!");

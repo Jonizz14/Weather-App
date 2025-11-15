@@ -118,3 +118,60 @@
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.6);
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .input {
+    font-size: 1rem;
+    padding: 0.8rem 0.8rem 0.8rem 3rem;
+  }
+
+  .input::placeholder {
+    font-size: 1rem;
+  }
+
+  .icon {
+    left: 0.8rem;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .location-btn {
+    width: 35px;
+    height: 35px;
+    right: 0.5rem;
+  }
+
+  .location-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .input {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.7rem 0.7rem 2.5rem;
+  }
+
+  .input::placeholder {
+    font-size: 0.9rem;
+  }
+
+  .icon {
+    left: 0.7rem;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .location-btn {
+    width: 30px;
+    height: 30px;
+    right: 0.3rem;
+  }
+
+  .location-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+}

@@ -4,41 +4,26 @@
 }
 
 .hourly-forecast {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   gap: 1rem;
-  overflow-x: auto;
   padding: 1rem;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.3) rgba(255,255,255,0.1);
-  background: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
   backdrop-filter: blur(50px);
   border-radius: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-.hourly-forecast::-webkit-scrollbar {
-  height: 6px;
-}
-
-.hourly-forecast::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 3px;
-}
-
-.hourly-forecast::-webkit-scrollbar-thumb {
-  background: #3498db;
-  border-radius: 3px;
-}
 
 .forecast-item {
-  background: var(--bg-tertiary);
-  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-radius: 16px;
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 2px 8px var(--shadow-color);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   animation: slideIn 0.5s ease-out;
   animation-fill-mode: both;
   min-width: 80px;
@@ -46,23 +31,29 @@
 }
 
 .forecast-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px var(--shadow-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .forecast-item .time {
   font-weight: 600;
   font-size: 0.9rem;
-  color: #ffffff;
+  color: #3b82f6;
   margin-bottom: 0.5rem;
 }
 
 .forecast-item .temp {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #1e40af;
   display: block;
   margin-top: 0.5rem;
+}
+
+.forecast-item .weather-icon {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  display: block;
 }
 
 .forecast-item.sunrise {

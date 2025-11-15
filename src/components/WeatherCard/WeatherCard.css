@@ -17,7 +17,6 @@
 }
 
 .weather-icon {
-  font-size: 5rem;
   opacity: 0.9;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   line-height: 1;
@@ -71,6 +70,7 @@
   font-weight: 300;
   color: #2c3e50;
   display: block;
+  transition: all 0.5s ease;
 }
 
 .weather-card .feels-like {

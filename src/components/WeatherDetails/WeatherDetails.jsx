@@ -93,7 +93,6 @@ const WeatherDetails = ({ weather }) => {
         <div
           key={index}
           className={`weather-card ${card.className}`}
-          style={{ animationDelay: `${index * 0.1}s` }}
         >
           <h4>{card.title}</h4>
           {card.content}

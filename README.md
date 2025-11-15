@@ -1,93 +1,147 @@
 # Weather App
 
-A modern, responsive weather application built with React that provides current weather information, forecasts, and interactive maps.
+🌤️ Zamonaviy, interaktiv va foydalanuvchi-do'st ob-havo ilovasi - React va Vite yordamida yaratilgan.
 
-## Features
+Weather App Preview
 
-- Current weather display with animated icons
-- 5-day weather forecast
-- Interactive map integration with Google Maps
-- Search functionality for cities worldwide
-- Responsive design for mobile and desktop
-- Real-time weather data updates
+📖 Tavsif
+Bu loyiha zamonaviy ob-havo ilovasi bo'lib, React texnologiyasi asosida qurilgan. Foydalanuvchilarga joriy ob-havo ma'lumotlari, 5 kunlik prognoz, interaktiv xarita va qidiruv funksiyalarini taqdim etadi. Tez yuklanish, mobil moslashuvchan dizayn va qulay interfeys bilan ajralib turadi.
 
-## Technologies Used
+🎯 Asosiy Maqsadlar
+🌤️ Joriy ob-havo ma'lumotlarini ko'rsatish
+📅 5 kunlik ob-havo prognozini taqdim etish
+🗺️ Interaktiv xarita integratsiyasi
+🔍 Shaharlar bo'yicha qidiruv
+📱 Barcha qurilmalarda mukammal ishlash
+✨ Xususiyatlar
+🚀 Asosiy Funksiyalar
+✅ Joriy Ob-havo - Animatsion ikonlar bilan
+✅ 5 Kunlik Prognoz - Kengaytirilgan ma'lumotlar
+✅ Google Maps Integratsiyasi - Interaktiv xarita
+✅ Shahar Qidiruvi - Dunyo bo'ylab
+✅ Responsive Dizayn - Desktop va mobil uchun
+✅ Real-vaqt Yangilanish - Doimiy ma'lumotlar
+🎨 Dizayn Xususiyatlari
+🎭 Zamonaviy UI/UX - Foydalanuvchi tajribasiga mos
+🌈 CSS Animatsiyalar - Chiroyli effektlar
+📱 Mobile-First - Avval mobil, keyin desktop
+🎯 Intuitive Navigation - Oson navigatsiya
+⚡ Fast Loading - Tez yuklanish uchun optimallashtirilgan
+🛠 Texnologiyalar
+Frontend
+React Vite CSS3 JavaScript
 
-### Languages
-- **JavaScript** - Main programming language using React JSX
-- **CSS** - Styling and responsive design
-- **HTML** - Markup structure
+Kutubxona va Frameworklar
+React Router DOM - Sahifalar o'rtasida navigatsiya
+Google Maps React Wrapper - Xarita integratsiyasi
+React Icons - Chiroyli ikonlar to'plami
+React Animated Weather - Animatsion ob-havo ikonlari
+React Use Animations - Qo'shimcha animatsiyalar
+Backend & API
+Weather API - Ob-havo ma'lumotlari uchun
+Fetch API - Asinxron ma'lumot olish
+📂 Loyiha Tuzilishi
+weather-app/
+├── public/
+│   ├── vite.svg
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── Header/
+│   │   ├── SearchBar/
+│   │   ├── WeatherDetails/
+│   │   ├── ForecastList/
+│   │   ├── Map/
+│   │   └── ...
+│   ├── pages/
+│   │   ├── Home/
+│   │   └── AboutUs/
+│   ├── hooks/
+│   ├── utils/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── .env
+├── package.json
+├── vite.config.js
+└── README.md
+📄 Sahifalar
+🏠 Home - Asosiy sahifa, ob-havo ma'lumotlari
+📅 Forecast - 5 kunlik prognoz
+🗺️ Map - Interaktiv xarita
+ℹ️ About Us - Ilova haqida
+🚀 O'rnatish va Ishga Tushirish
+Talablar
+Node.js (v16 yoki undan yuqori)
+npm yoki yarn
+Qadamlar
+Repositoryni klonlash
 
-### Frameworks & Libraries
-- **React 19.2.0** - UI framework for building the user interface
-- **Vite** - Build tool and development server
-- **React Router DOM** - Client-side routing
-- **Google Maps React Wrapper** - Map integration
-- **React Icons** - Icon library
-- **React Animated Weather** - Animated weather icons
-- **React Use Animations** - Additional animations
-
-### Development Tools
-- **ESLint** - Code linting
-- **Vite Plugin React** - React integration for Vite
-
-## Screenshots
-
-### Main Weather Display
-![Main Weather Display](screenshots/main-weather.png)
-
-### Forecast View
-![Forecast View](screenshots/forecast.png)
-
-### Map Integration
-![Map View](screenshots/map.png)
-
-*Note: Replace the image paths with actual screenshot files in the `screenshots/` directory.*
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
+git clone https://github.com/your-username/weather-app.git
 cd weather-app
-```
+Kutubxonalarni o'rnatish
 
-2. Install dependencies:
-```bash
 npm install
-```
+Environment faylini yaratish
 
-3. Create a `.env` file and add your Google Maps API key:
-```
+cp .env.example .env
+.env faylida Google Maps API kalitini qo'shing:
+
 VITE_GOOGLE_MAPS_API_KEY=your_api_key_here
-```
+Saytni ishga tushirish
 
-4. Start the development server:
-```bash
 npm run dev
-```
+Brauzerda ochish
 
-5. Open your browser and navigate to `http://localhost:5173`
+http://localhost:5173
+📸 Screenshots
+🏠 Asosiy Sahifa
+Main Weather Display Asosiy sahifa - joriy ob-havo va qidiruv
 
-## Usage
+📅 Prognoz Sahifasi
+Forecast View 5 kunlik ob-havo prognozi
 
-- Enter a city name in the search bar to get weather information
-- View current weather conditions and 5-day forecast
-- Use the interactive map to explore weather patterns
-- Navigate between different sections using the sidebar
+🗺️ Xarita Sahifasi
+Map View Google Maps integratsiyasi
 
-## Build
+🎮 Foydalanish
+Navigatsiya
+Header menyusi orqali sahifalar o'rtasida o'ting
+Sidebar'da qo'shimcha funksiyalar mavjud
+Mobile versiyada responsive dizayn ishlaydi
+Qidiruv
+Search bar'da shahar nomini kiriting
+Enter bosib yoki qidiruv tugmasini bosing
+Ob-havo ma'lumotlari avtomatik yuklanadi
+Xarita
+Map bo'limida joylashuvni ko'ring
+Zoom va pan funksiyalaridan foydalaning
+Responsive Dizayn
+Desktop: To'liq funksiyalar
+Tablet: Moslashuvchan layout
+Mobile: Touch-friendly interfeys
+🤝 Hissa Qo'shish
+Hissa qo'shishni xohlaysizmi? Ajoyib!
 
-To build the project for production:
+Fork qiling
+Feature branch yarating (git checkout -b feature/amazing-feature)
+Commit qiling (git commit -m 'Add amazing feature')
+Push qiling (git push origin feature/amazing-feature)
+Pull Request yarating
+Development Guidelines
+ESLint qoidalariga rioya qiling
+Componentlarni modulli yozing
+CSS BEM metodologiyasidan foydalaning
+Commit xabarlari aniq va tushunarli bo'lsin
+📄 Litsenziya
+Bu loyiha MIT litsenziyasi ostida tarqatiladi. Batafsil ma'lumot uchun LICENSE faylini ko'ring.
 
-```bash
-npm run build
-```
+👥 Mualliflar
+Jahongir - Frontend Developer
+🙏 Rahmat
+React jamoasiga ajoyib framework uchun
+Google Maps jamoasiga xarita API uchun
+Barcha open-source contributorlarga
+🌟 Bu ilovani yoqtirdingizmi? GitHub'da yulduzcha qo'ying! 🌟
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License.
+📧 Savollaringiz bormi? Issue oching yoki email yozing.

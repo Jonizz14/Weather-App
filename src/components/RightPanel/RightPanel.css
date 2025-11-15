@@ -44,6 +44,47 @@
   font-family: 'Courier New', monospace;
 }
 
+.nearby-cities {
+  grid-column: span 2;
+}
+
+.nearby-list {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.nearby-city {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nearby-city:last-child {
+  border-bottom: none;
+}
+
+.city-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  flex: 1;
+  text-align: left;
+}
+
+.distance {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0.5rem;
+}
+
+.nearby-city .temp {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+}
+
 .card-icon {
   font-size: 2rem;
   margin-bottom: 0.5rem;

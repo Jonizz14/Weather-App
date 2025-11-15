@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+itimport React, { useState } from "react";
 import useWeather from "../../hooks/useWeather";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
@@ -8,6 +8,7 @@ import RightPanel from "../../components/RightPanel/RightPanel";
 import Footer from "../../components/Footer/Footer";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import "./Home.css";
 
 export default function Home() {

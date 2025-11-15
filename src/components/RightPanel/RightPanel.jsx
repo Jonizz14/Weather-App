@@ -1,5 +1,4 @@
 import React from 'react';
-import Map from '../Map/Map';
 import './RightPanel.css';
 
 const RightPanel = ({ weather }) => {
@@ -27,9 +26,7 @@ const RightPanel = ({ weather }) => {
                   <circle cx="20" cy="20" r="18" fill="#4A90E2" stroke="white" stroke-width="3"/>
                   <text x="20" y="25" text-anchor="middle" fill="white" font-size="12" font-weight="bold">${Math.round(weather.main.temp)}°</text>
                 </svg>
-              `),
-              scaledSize: new google.maps.Size(40, 40),
-              anchor: new google.maps.Point(20, 40)
+              `)
             }
           }]}
         />

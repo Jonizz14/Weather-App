@@ -1,20 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import useWeather from "../../hooks/useWeather";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
 import ForecastList from "../../components/ForecastList/ForecastList";
+import DailyForecast from "../../components/DailyForecast/DailyForecast";
+import WeatherDetails from "../../components/WeatherDetails/WeatherDetails";
+import Footer from "../../components/Footer/Footer";
 import Loader from "../../components/Loader/Loader";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import "./Home.css";
 
 export default function Home() {
   const { weather, forecast, loading, error, getWeather } = useWeather();
+  const [savedCities, setSavedCities] = useState([]);
+
+  const handleSearch = async (city) => {
+    await getWeather(city);
+  };
+
+  // Update saved cities when weather data changes
+  React.useEffect(() => {
+    if (weather) {
+      setSavedCities(prev => {
+        const existingIndex = prev.findIndex(c => c.name.toLowerCase() === weather.name.toLowerCase());
+        if (existingIndex >= 0) {
+          // Update existing
+          const updated = [...prev];
+          updated[existingIndex] = { name: weather.name, weather, forecast };
+          return updated;
+        } else {
+          // Add new
+          return [...prev, { name: weather.name, weather, forecast }];
+        }
+      });
+    }
+  }, [weather, forecast]);
+
+  const handleCityClick = (cityName) => {
+    getWeather(cityName);
+  };
 
   return (
     <div className="home">
-      <SearchBar onSearch={getWeather} />
-      {loading && <Loader />}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {weather && <WeatherCard data={weather} />}
-      {forecast && <ForecastList forecast={forecast} />}
+      <LeftSidebar onSearch={handleSearch} savedCities={savedCities} onCityClick={handleCityClick} />
+      <main className="main-content">
+        <div className="container">
+          {loading && <Loader />}
+          {error && <ErrorMessage message={error} onRetry={() => getWeather("")} />}
+          {weather && <WeatherCard data={weather} />}
+          {forecast && <ForecastList forecast={forecast} weather={weather} />}
+          {forecast && <DailyForecast forecast={forecast} />}
+          {weather && <WeatherDetails weather={weather} />}
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 }

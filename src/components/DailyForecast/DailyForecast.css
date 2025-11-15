@@ -1,0 +1,84 @@
+.daily-forecast {
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.daily-list {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(50px);
+  border-radius: 32px;
+  padding: 1rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.daily-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.daily-item:last-child {
+  border-bottom: none;
+}
+
+.daily-item .day {
+  font-weight: 600;
+  color: #ffffff;
+  flex: 1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.temp-bars {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  flex: 2;
+}
+
+.temp-bar {
+  position: relative;
+  width: 100px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.bar-fill {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(90deg, #74b9ff, #ff6b6b);
+  border-radius: 2px;
+}
+
+.temp-labels {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.temp-labels .high {
+  font-weight: 700;
+  color: #ff6b6b;
+}
+
+.temp-labels .low {
+  color: #74b9ff;
+}
+
+@media (max-width: 768px) {
+  .daily-forecast {
+    padding: 0 0.5rem;
+  }
+
+  .daily-list {
+    padding: 0.75rem;
+  }
+
+  .daily-item {
+    padding: 0.5rem 0;
+  }
+}

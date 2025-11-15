@@ -1,0 +1,257 @@
+.weather-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.weather-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(50px);
+  border-radius: 32px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+}
+
+.weather-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.weather-card h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Map Card */
+.map-display {
+  display: flex;
+  justify-content: center;
+}
+
+.map-background {
+  width: 120px;
+  height: 80px;
+  background: linear-gradient(135deg, #2d3748, #1a202c);
+  border-radius: 8px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.country-label {
+  position: absolute;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+.kazakhstan {
+  top: 5px;
+  left: 5px;
+}
+
+.tajikistan {
+  bottom: 5px;
+  right: 5px;
+}
+
+.kyrgyzstan {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.turkmenistan {
+  bottom: 5px;
+  left: 5px;
+}
+
+.city-marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+}
+
+/* UV Card */
+.uv-gauge {
+  display: flex;
+  justify-content: center;
+}
+
+.gauge-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #ffeb3b 0deg, #ffc107 90deg, #ff9800 180deg, #f44336 270deg, #9c27b0 360deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.gauge-circle::before {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
+
+.uv-value {
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Sunrise Card */
+.sun-times {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sun-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sun-item .icon {
+  font-size: 1.5rem;
+}
+
+/* Moon Card */
+.moon-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.moon-icon {
+  font-size: 2rem;
+}
+
+/* Other cards */
+.precip-value,
+.humidity-value,
+.visibility-value,
+.feels-temp {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #ffffff;
+}
+
+.dew-point {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.5rem;
+}
+
+/* Wind Card */
+.wind-compass {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.compass-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wind-direction {
+  font-size: 1.5rem;
+}
+
+.wind-speed {
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+/* Pressure Card */
+.pressure-gauge {
+  display: flex;
+  justify-content: center;
+}
+
+.gauge-semi {
+  width: 100px;
+  height: 50px;
+  background: conic-gradient(from 180deg, #2196f3 0deg, #21cbf3 180deg);
+  border-radius: 50px 50px 0 0;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+  color: #000;
+  font-weight: 600;
+}
+
+/* Temperature Chart Card */
+.temp-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chart-bar {
+  position: relative;
+  width: 20px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.current-temp {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(180deg, #ff6b6b, #ff4757);
+  border-radius: 10px;
+  transition: height 0.5s ease;
+}
+
+.average-temp {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 10px;
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+  .weather-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .weather-card {
+    padding: 1rem;
+  }
+}

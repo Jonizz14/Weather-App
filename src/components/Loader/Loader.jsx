@@ -1,7 +1,7 @@
 import React from 'react'
 import './Loader.css'
 
-const Loader = ({text = "Yuklanmoqda..." }) => {
+const Loader = () => {
   return (
       <div className="loader">
         <svg width={100} height={100} viewBox="0 0 100 100">

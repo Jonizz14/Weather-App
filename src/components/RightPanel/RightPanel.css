@@ -1,88 +1,74 @@
 .right-panel {
-  width: 350px;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(20px);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 2rem 1rem;
-  position: fixed;
-  right: 0;
-  top: 0;
-  overflow-y: auto;
-}
-
-.panel-content {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  height: fit-content;
 }
 
 .weather-card {
-  background: rgba(255, 255, 255, 0.1);
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
-  border-radius: 24px;
-  padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .weather-card h4 {
-  margin: 0 0 1rem 0;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.01em;
 }
 
 /* Map Card */
 .map-display {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(135deg, #1a365d, #2d3748);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.map-background {
-  width: 120px;
-  height: 80px;
-  background: linear-gradient(135deg, #2d3748, #1a202c);
-  border-radius: 8px;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.country-label {
+.temperature-marker {
   position: absolute;
-  font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.6);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a365d;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
   font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.kazakhstan {
-  top: 5px;
-  left: 5px;
-}
-
-.tajikistan {
-  bottom: 5px;
-  right: 5px;
-}
-
-.kyrgyzstan {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.turkmenistan {
-  bottom: 5px;
-  left: 5px;
-}
-
-.city-marker {
+.temperature-marker::after {
+  content: '';
   position: absolute;
-  top: 50%;
+  bottom: -4px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1rem;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid rgba(255, 255, 255, 0.9);
 }
 
 /* UV Card */
@@ -147,19 +133,29 @@
   font-size: 2rem;
 }
 
-/* Other cards */
+/* Card values */
 .precip-value,
 .humidity-value,
 .visibility-value,
-.feels-temp {
-  font-size: 2rem;
+.feels-temp,
+.wind-speed {
+  font-size: 1.5rem;
   font-weight: 300;
+  color: #ffffff;
+  margin: 0.25rem 0;
+}
+
+.uv-value,
+.pressure-gauge span {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #ffffff;
 }
 
 .dew-point {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.25rem;
 }
 
 /* Wind Card */

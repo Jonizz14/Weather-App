@@ -13,13 +13,7 @@ const RightPanel = ({ weather }) => {
         <div className="weather-card map-card">
           <h4>Map</h4>
           <div className="map-display">
-            <div className="map-background">
-              <div className="country-label kazakhstan">Kazakhstan</div>
-              <div className="country-label tajikistan">Tajikistan</div>
-              <div className="country-label kyrgyzstan">Kyrgyzstan</div>
-              <div className="country-label turkmenistan">Turkmenistan</div>
-              <div className="city-marker">📍</div>
-            </div>
+            <div className="temperature-marker">{Math.round(weather.main.temp)}°</div>
           </div>
         </div>
 

@@ -4,7 +4,7 @@ import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
 import ForecastList from "../../components/ForecastList/ForecastList";
 import DailyForecast from "../../components/DailyForecast/DailyForecast";
-import WeatherDetails from "../../components/WeatherDetails/WeatherDetails";
+import RightPanel from "../../components/RightPanel/RightPanel";
 import Footer from "../../components/Footer/Footer";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -44,13 +44,15 @@ export default function Home() {
     <div className="home">
       <LeftSidebar onSearch={handleSearch} savedCities={savedCities} onCityClick={handleCityClick} />
       <main className="main-content">
-        <div className="container">
-          {loading && <Loader />}
-          {error && <ErrorMessage message={error} onRetry={() => getWeather("")} />}
-          {weather && <WeatherCard data={weather} />}
-          {forecast && <ForecastList forecast={forecast} weather={weather} />}
-          {forecast && <DailyForecast forecast={forecast} />}
-          {weather && <WeatherDetails weather={weather} />}
+        <div className="weather-layout">
+          <div className="left-column">
+            {loading && <Loader />}
+            {error && <ErrorMessage message={error} onRetry={() => getWeather("")} />}
+            {weather && <WeatherCard data={weather} />}
+            {forecast && <ForecastList forecast={forecast} weather={weather} />}
+            {forecast && <DailyForecast forecast={forecast} />}
+          </div>
+          {weather && <RightPanel weather={weather} />}
         </div>
       </main>
       <Footer />

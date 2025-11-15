@@ -17,9 +17,10 @@
 }
 
 .weather-icon {
-  font-size: 4rem;
+  font-size: 5rem;
   opacity: 0.9;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  line-height: 1;
 }
 
 .weather-info {

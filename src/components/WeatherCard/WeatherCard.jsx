@@ -1,15 +1,16 @@
 import React from "react";
-import { WiDaySunny, WiCloudy, WiRain, WiSnow, WiThunderstorm } from "react-icons/wi";
 import "./WeatherCard.css";
 
 export default function WeatherCard({ data }) {
   const getWeatherIcon = (icon) => {
-    if (icon.includes("01")) return <WiDaySunny size={80} animate={true} />;
-    if (icon.includes("02") || icon.includes("03") || icon.includes("04")) return <WiCloudy size={80} animate={true} />;
-    if (icon.includes("09") || icon.includes("10")) return <WiRain size={80} animate={true} />;
-    if (icon.includes("11")) return <WiThunderstorm size={80} animate={true} />;
-    if (icon.includes("13")) return <WiSnow size={80} animate={true} />;
-    return <WiDaySunny size={80} animate={true} />;
+    if (icon.includes("01")) return "☀️"; // Sunny
+    if (icon.includes("02") || icon.includes("03")) return "⛅"; // Partly cloudy
+    if (icon.includes("04")) return "☁️"; // Cloudy
+    if (icon.includes("09") || icon.includes("10")) return "🌧️"; // Rain
+    if (icon.includes("11")) return "⛈️"; // Thunderstorm
+    if (icon.includes("13")) return "❄️"; // Snow
+    if (icon.includes("50")) return "🌫️"; // Mist
+    return "☀️";
   };
 
   return (

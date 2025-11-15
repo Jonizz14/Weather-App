@@ -137,7 +137,7 @@
 }
 
 /* === 1. Planshet (Tablet) uchun Responsive === */
-@media (max-width: 1024px) {
+@media (max-width: 1366px) {
   .left-sidebar {
     width: 320px;
     z-index: 200; /* Boshqa elementlardan yuqorida turishi uchun */
@@ -154,9 +154,15 @@
 }
 
 /* === 2. Mobil Telefon (Mobile) uchun Responsive === */
-@media (max-width: 768px) {
+@media (max-width: 1366px) {
   .left-sidebar {
     width: 300px; /* enini biroz kichraytiramiz */
+    transform: translateX(-100%); /* default yopiq */
+    position: fixed;
+  }
+
+  .left-sidebar.open {
+    transform: translateX(0); /* faqat menyu tugmasi bosilganda ochiladi */
   }
 }
 
@@ -164,5 +170,26 @@
 @media (max-width: 480px) {
   .left-sidebar {
     width: 280px; /* yanada kichraytiramiz */
+  }
+}
+
+/* === 4. 1440p Monitorlar uchun === */
+@media (min-width: 1440px) {
+  .left-sidebar {
+    width: 380px; /* biroz kengaytiramiz */
+  }
+}
+
+/* === 5. 2K Monitorlar uchun === */
+@media (min-width: 2560px) {
+  .left-sidebar {
+    width: 400px; /* kengaytiramiz */
+  }
+}
+
+/* === 5. 4K Monitorlar uchun === */
+@media (min-width: 3840px) {
+  .left-sidebar {
+    width: 500px; /* yanada kengaytiramiz */
   }
 }

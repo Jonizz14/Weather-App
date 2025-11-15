@@ -12,7 +12,8 @@ import "./Home.css";
 export default function Home() {
   const { weather, forecast, loading, error, locationError, getWeather, getWeatherByCoords, retryLocation } = useWeather();
   const [searchedCities, setSearchedCities] = useState([]);
-  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 1024);
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 1366);
+  const [isDay, setIsDay] = useState(new Date().getHours() >= 6 && new Date().getHours() < 18);
 
   // Load searched cities from localStorage on mount
   React.useEffect(() => {
@@ -23,6 +24,28 @@ export default function Home() {
       const formatted = parsed.map(item => typeof item === 'string' ? { name: item, weather: null, forecast: null } : item);
       setSearchedCities(formatted);
     }
+  }, []);
+
+  // Update sidebar state on window resize
+  React.useEffect(() => {
+    const handleResize = () => {
+      setSidebarOpen(window.innerWidth > 1366);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Update day/night theme based on current time
+  React.useEffect(() => {
+    const updateTheme = () => {
+      const hour = new Date().getHours();
+      setIsDay(hour >= 6 && hour < 18);
+    };
+
+    updateTheme(); // Initial check
+    const interval = setInterval(updateTheme, 60000); // Update every minute
+    return () => clearInterval(interval);
   }, []);
 
   // Update weather data for searched cities
@@ -71,30 +94,35 @@ export default function Home() {
 
   return (
     <>
-      <div className={`home ${!sidebarOpen ? 'sidebar-closed' : ''}`}>
-        <LeftSidebar className={sidebarOpen ? 'open' : 'closed'} onSearch={handleSearch} onLocation={getWeatherByCoords} searchedCities={searchedCities} onCityClick={handleCityClick} onDeleteCity={handleDeleteCity} onClearAllCities={handleClearAllCities} onClose={() => setSidebarOpen(false)} />
-        {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)}></div>}
+      <div className={`home ${!sidebarOpen ? 'sidebar-closed' : ''} ${isDay ? 'day-theme' : 'night-theme'}`}>
+        <LeftSidebar className={sidebarOpen ? "open" : ""} onSearch={handleSearch} onLocation={getWeatherByCoords} searchedCities={searchedCities} onCityClick={handleCityClick} onDeleteCity={handleDeleteCity} onClearAllCities={handleClearAllCities} onClose={() => setSidebarOpen(false)} />
+        {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} onTouchStart={() => setSidebarOpen(false)}></div>}
         <main className="main-content">
-          <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
-            {sidebarOpen ? '◀' : '▶'}
-          </button>
+           <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
+             {sidebarOpen ? '◀' : '▶'}
+           </button>
 
-        {loading && <Loader />}
-        {error && <ErrorMessage message={error} onRetry={() => getWeather("")} />}
-        {locationError && !weather && (
-          <ErrorMessage message={locationError} onRetry={retryLocation} />
-        )}
-        {!weather && !loading && !error && !locationError && (
-          <div className="welcome-message">
-            <h1>Search for a City</h1>
-            <p>Use the search bar above to find weather information for any city</p>
-          </div>
-        )}
-        {weather && (
-          <>
-            <section className="weather-overview">
-              <WeatherCard data={weather} />
-            </section>
+           {/* Mobile search bar - visible only on mobile */}
+           <section className="mobile-search-section">
+             <SearchBar onSearch={handleSearch} onLocation={getWeatherByCoords} />
+           </section>
+
+         {loading && <Loader />}
+         {error && <ErrorMessage message={error} onRetry={() => getWeather("")} />}
+         {locationError && !weather && (
+           <ErrorMessage message={locationError} onRetry={retryLocation} />
+         )}
+         {!weather && !loading && !error && !locationError && (
+           <div className="welcome-message">
+             <h1>Search for a City</h1>
+             <p>Use the search bar above to find weather information for any city</p>
+           </div>
+         )}
+         {weather && (
+           <>
+             <section className="weather-overview">
+               <WeatherCard data={weather} />
+             </section>
 
             {forecast && (
               <section className="hourly-forecast-section">

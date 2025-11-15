@@ -122,29 +122,29 @@
 /* Responsive */
 @media (max-width: 768px) {
   .input {
-    font-size: 1rem;
-    padding: 0.8rem 0.8rem 0.8rem 3rem;
+    font-size: 1.1rem;
+    padding: 0.9rem 0.9rem 0.9rem 3.2rem;
   }
 
   .input::placeholder {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .icon {
-    left: 0.8rem;
-    width: 1.2rem;
-    height: 1.2rem;
+    left: 0.9rem;
+    width: 1.4rem;
+    height: 1.4rem;
   }
 
   .location-btn {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     right: 0.5rem;
   }
 
   .location-btn svg {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -173,5 +173,33 @@
   .location-btn svg {
     width: 14px;
     height: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .input {
+    font-size: 1rem;
+    padding: 0.8rem 0.8rem 0.8rem 2.7rem;
+  }
+
+  .input::placeholder {
+    font-size: 1rem;
+  }
+
+  .icon {
+    left: 0.8rem;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .location-btn {
+    width: 35px;
+    height: 35px;
+    right: 0.4rem;
+  }
+
+  .location-btn svg {
+    width: 16px;
+    height: 16px;
   }
 }

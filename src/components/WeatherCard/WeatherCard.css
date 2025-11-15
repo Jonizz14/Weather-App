@@ -80,19 +80,19 @@
   }
 
   .location {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .temperature {
-    font-size: 4rem;
+    font-size: 5.5rem;
   }
 
   .condition {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   .weather-icon {
-    font-size: 3rem;
+    font-size: 4rem;
   }
 }
 
@@ -125,55 +125,49 @@
   }
 }
 
-/* ... (Asosiy uslublaringiz o'zgarishsiz qoladi) ... */
-
-/* Responsive */
-@media (max-width: 768px) {
-  .weather-card {
-    max-width: 100%;
-  }
-
-  .location {
-    font-size: 1.5rem;
-  }
-
-  .temperature {
-    font-size: 4rem;
-  }
-
-  .condition {
-    font-size: 1.2rem;
-  }
-
-  .high-low {
-    font-size: 1rem;
-  }
-
-  .coordinates {
-    font-size: 0.8rem;
-  }
-
-  .weather-icon svg {
-    width: 60px !important;
-    height: 60px !important;
-  }
-}
 
 @media (max-width: 480px) {
   .location {
-    font-size: 1.3rem;
+    font-size: 2rem;
   }
 
   .temperature {
-    font-size: 3rem;
+    font-size: 5rem;
+  }
+
+  .condition {
+    font-size: 1.4rem;
   }
 
   .weather-icon svg {
-    width: 50px !important;
-    height: 50px !important;
+    width: 80px !important;
+    height: 80px !important;
   }
 
   .high-low {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .location {
+    font-size: 2.5rem;
+  }
+
+  .temperature {
+    font-size: 6rem;
+  }
+
+  .condition {
+    font-size: 1.6rem;
+  }
+
+  .weather-icon svg {
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+  .high-low {
+    font-size: 1.2rem;
   }
 }

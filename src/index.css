@@ -42,22 +42,33 @@ code {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   body {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .glass-card {
-    padding: 1rem;
+    padding: 1.25rem;
     border-radius: 20px;
   }
 }
 
 @media (max-width: 480px) {
   body {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .glass-card {
     padding: 0.75rem;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  body {
+    font-size: 18px;
+  }
+
+  .glass-card {
+    padding: 1rem;
     border-radius: 16px;
   }
 }

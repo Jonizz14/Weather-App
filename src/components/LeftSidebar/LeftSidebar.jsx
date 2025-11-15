@@ -18,7 +18,7 @@ const LeftSidebar = ({
       <button className="sidebar-close-btn" onClick={onClose}>
         <FiX />
       </button>
-      <div className="sidebar-content">
+      <div className="sidebar-content" onClick={(e) => e.stopPropagation()} onTouchStart={(e) => e.stopPropagation()}>
         {" "}
         <SearchBar onSearch={onSearch} onLocation={onLocation} />{" "}
         <div className="searched-cities">

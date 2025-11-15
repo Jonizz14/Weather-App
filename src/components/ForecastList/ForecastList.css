@@ -93,17 +93,17 @@
   }
 
   .time {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .temp {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   /* Ikonka o'lchamini kichraytirish (React Animated Weather komponenti uchun) */
   .weather-icon svg {
-    width: 28px !important;
-    height: 28px !important;
+    width: 36px !important;
+    height: 36px !important;
   }
 }
 
@@ -114,16 +114,36 @@
   }
 
   .time {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
 
   .temp {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
 
   /* Ikonka o'lchamini yana kichraytirish */
   .weather-icon svg {
-    width: 24px !important;
-    height: 24px !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .forecast-item {
+    min-width: 65px;
+    padding: 0.6rem 0.3rem;
+  }
+
+  .time {
+    font-size: 1rem;
+  }
+
+  .temp {
+    font-size: 1.3rem;
+  }
+
+  .weather-icon svg {
+    width: 40px !important;
+    height: 40px !important;
   }
 }

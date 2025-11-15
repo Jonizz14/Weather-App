@@ -70,7 +70,7 @@ export default function SearchBar({ onSearch }) {
   };
 
   return (
-    <div className="search-container">
+    <div className="search-container" onClick={(e) => e.stopPropagation()} onTouchStart={(e) => e.stopPropagation()}>
       <form onSubmit={handleSubmit} className="search-bar">
         <div className="group">
           <svg
@@ -87,18 +87,9 @@ export default function SearchBar({ onSearch }) {
             placeholder="Search City"
             value={city}
             onChange={handleInputChange}
+            onClick={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
           />
-
-          <button
-            type="button"
-            className="location-btn"
-            onClick={getCurrentLocation}
-            title="Joriy joylashuvni aniqlash"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-          </button>
         </div>
 
       </form>

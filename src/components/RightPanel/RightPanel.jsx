@@ -18,88 +18,63 @@ const RightPanel = ({ weather }) => {
         </div>
 
         <div className="weather-card uv-card">
+          <div className="card-icon">☀️</div>
           <h4>UV Index</h4>
-          <div className="uv-gauge">
-            <div className="gauge-circle">
-              <span className="uv-value">Low</span>
-            </div>
-          </div>
+          <div className="uv-value">Low</div>
         </div>
 
         <div className="weather-card sunrise-card">
-          <h4>Sunrise & Sunset</h4>
-          <div className="sun-times">
-            <div className="sun-item">
-              <span className="icon">🌅</span>
-              <span>{sunrise}</span>
-            </div>
-            <div className="sun-item">
-              <span className="icon">🌇</span>
-              <span>{sunset}</span>
-            </div>
-          </div>
+          <div className="card-icon">🌅</div>
+          <h4>Sunrise</h4>
+          <div className="sun-value">{sunrise}</div>
+        </div>
+
+        <div className="weather-card sunset-card">
+          <div className="card-icon">🌇</div>
+          <h4>Sunset</h4>
+          <div className="sun-value">{sunset}</div>
         </div>
 
         <div className="weather-card moon-card">
-          <h4>Moon Phase</h4>
-          <div className="moon-display">
-            <span className="moon-icon">🌕</span>
-            <span>Waning Gibbous</span>
-          </div>
+          <div className="card-icon">🌙</div>
+          <h4>Moon</h4>
+          <div className="moon-value">Waning</div>
         </div>
 
         <div className="weather-card precip-card">
-          <h4>Precipitation</h4>
+          <div className="card-icon">🌧️</div>
+          <h4>Rain</h4>
           <div className="precip-value">0 mm</div>
         </div>
 
         <div className="weather-card humidity-card">
+          <div className="card-icon">💧</div>
           <h4>Humidity</h4>
           <div className="humidity-value">{weather.main.humidity}%</div>
-          <div className="dew-point">Dew point 3°</div>
         </div>
 
         <div className="weather-card wind-card">
+          <div className="card-icon">💨</div>
           <h4>Wind</h4>
-          <div className="wind-compass">
-            <div className="compass-circle">
-              <span className="wind-direction">↑</span>
-            </div>
-          </div>
           <div className="wind-speed">{weather.wind.speed} km/h</div>
         </div>
 
         <div className="weather-card visibility-card">
+          <div className="card-icon">👁️</div>
           <h4>Visibility</h4>
           <div className="visibility-value">{(weather.visibility / 1000).toFixed(0)} km</div>
         </div>
 
         <div className="weather-card pressure-card">
+          <div className="card-icon">📊</div>
           <h4>Pressure</h4>
-          <div className="pressure-gauge">
-            <div className="gauge-semi">
-              <span>{weather.main.pressure} hPa</span>
-            </div>
-          </div>
+          <div className="pressure-value">{weather.main.pressure} hPa</div>
         </div>
 
         <div className="weather-card feels-like-card">
+          <div className="card-icon">🌡️</div>
           <h4>Feels Like</h4>
           <div className="feels-temp">{Math.round(weather.main.feels_like)}°</div>
-        </div>
-
-        <div className="weather-card temp-chart-card">
-          <h4>Temperature vs Average</h4>
-          <div className="temp-chart">
-            <div className="chart-bar">
-              <div className="current-temp" style={{ height: `${Math.min(100, (weather.main.temp + 20) * 2.5)}%` }}></div>
-              <div className="average-temp" style={{ height: '50%' }}></div>
-            </div>
-            <div className="chart-labels">
-              <span>Current</span>
-              <span>Average</span>
-            </div>
-          </div>
         </div>
       </div>
     </aside>

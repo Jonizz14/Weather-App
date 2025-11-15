@@ -23,9 +23,14 @@
   position: relative;
 }
 
+.weather-card .card-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
 .weather-card h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: 0.85rem;
+  margin: 0 0 0.25rem 0;
+  font-size: 0.8rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0.01em;

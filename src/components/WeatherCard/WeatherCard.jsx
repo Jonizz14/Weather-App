@@ -38,9 +38,10 @@ export default function WeatherCard({ data }) {
       <div className="weather-main">
         <div className="weather-icon">{getWeatherIcon(data.weather[0].icon)}</div>
         <div className="weather-info">
-          <h1 className="location-title">{data.name} – {Math.round(data.main.temp)}°</h1>
-          <p className="condition">{data.weather[0].description}</p>
-          <p className="high-low">Max {Math.round(data.main.temp_max)}° Min {Math.round(data.main.temp_min)}°</p>
+          <div className="temperature">{Math.round(data.main.temp)}°</div>
+          <div className="location">{data.name}</div>
+          <div className="condition">{data.weather[0].description}</div>
+          <div className="high-low">H:{Math.round(data.main.temp_max)}° L:{Math.round(data.main.temp_min)}°</div>
         </div>
       </div>
     </div>

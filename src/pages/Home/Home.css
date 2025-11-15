@@ -28,6 +28,7 @@
   position: relative;
   z-index: 1;
   padding: 2rem;
+  padding-top: 80px; /* header height + padding */
   padding-left: 320px; /* sidebar width + padding */
   padding-bottom: 80px; /* footer height */
   display: flex;
@@ -105,10 +106,6 @@
   transition: all 0.3s ease;
 }
 
-.glass-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

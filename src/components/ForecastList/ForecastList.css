@@ -27,11 +27,6 @@
   color: white;
 }
 
-.forecast-item:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
 
 .time {
   font-size: 0.9rem;
@@ -57,7 +52,6 @@
 .sunrise {
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.1));
   border: 1px solid rgba(255, 215, 0, 0.3);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
 }
 
 .sunrise .time {
@@ -84,9 +78,6 @@
   border-radius: 2px;
 }
 
-.forecast-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
-}
 
 /* Responsive */
 @media (max-width: 768px) {

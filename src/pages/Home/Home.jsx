@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useWeather from "../../hooks/useWeather";
+import Header from "../../components/Header/Header";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
 import ForecastList from "../../components/ForecastList/ForecastList";
@@ -58,10 +59,19 @@ export default function Home() {
     getWeather(cityName);
   };
 
+  const handleDeleteCity = (cityName) => {
+    setSearchedCities(prev => {
+      const updated = prev.filter(c => c.name.toLowerCase() !== cityName.toLowerCase());
+      localStorage.setItem('searchedCities', JSON.stringify(updated));
+      return updated;
+    });
+  };
+
   return (
     <>
+      <Header />
       <div className="home">
-        {sidebarOpen && <LeftSidebar onSearch={handleSearch} searchedCities={searchedCities} onCityClick={handleCityClick} />}
+        {sidebarOpen && <LeftSidebar onSearch={handleSearch} searchedCities={searchedCities} onCityClick={handleCityClick} onDeleteCity={handleDeleteCity} />}
         <main className="main-content">
           <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
             {sidebarOpen ? '◀' : '▶'}

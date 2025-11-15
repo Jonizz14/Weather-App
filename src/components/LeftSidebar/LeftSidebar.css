@@ -1,9 +1,9 @@
 .left-sidebar {
   position: fixed;
-  top: 0;
+  top: 60px;
   left: 0;
   width: 300px;
-  height: 100vh;
+  height: calc(100vh - 60px);
   background: rgba(0, 0, 0, 0.9);
   padding: 2rem;
   z-index: 10;
@@ -37,10 +37,28 @@
   margin-bottom: 0.5rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.city-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 

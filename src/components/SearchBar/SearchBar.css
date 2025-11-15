@@ -50,8 +50,6 @@
 .input:focus {
   border-color: rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.05);
-  transform: translateY(-2px);
 }
 
 .input {
@@ -106,9 +104,6 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.suggestion-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
 
 .suggestion-item:last-child {
   border-bottom: none;

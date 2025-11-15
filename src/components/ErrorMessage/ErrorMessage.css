@@ -27,8 +27,3 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
-.retry-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-}

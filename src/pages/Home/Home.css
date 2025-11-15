@@ -28,9 +28,9 @@
   position: relative;
   z-index: 1;
   padding: 2rem;
-  padding-top: 80px; /* header height + padding */
-  padding-left: 320px; /* sidebar width + padding */
-  padding-bottom: 80px; /* footer height */
+  padding-top: 20px; /* reduced since no header */
+  padding-left: 420px; /* sidebar width 400px + padding 20px */
+  padding-bottom: 20px; /* reduced since no footer */
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -138,6 +138,15 @@
   .detail-widgets {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* Loader positioning */
+.main-content .loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
 /* Animations */

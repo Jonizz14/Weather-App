@@ -203,10 +203,10 @@ const render = (status) => {
   switch (status) {
     case Status.LOADING:
       console.log('Google Maps loading...');
-      return <div className="map-loading">Xarita yuklanmoqda...</div>;
+      return <div className="map-loading">Loading map...</div>;
     case Status.FAILURE:
       console.log('Google Maps failed to load');
-      return <div className="map-error">Xaritani yuklashda xatolik yuz berdi</div>;
+      return <div className="map-error">Error loading map</div>;
     case Status.SUCCESS:
       console.log('Google Maps loaded successfully');
       return <MapComponent />;

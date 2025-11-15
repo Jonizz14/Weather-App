@@ -31,7 +31,7 @@ export default function App() {
   }, []);
 
   if (isLoading) {
-    return <Loader text="Ob-havo maʼlumotlari yuklanmoqda..." />;
+    return <Loader text="Loading weather data..." />;
   }
 
   return <Router />;

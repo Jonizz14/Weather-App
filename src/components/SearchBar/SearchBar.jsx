@@ -34,11 +34,11 @@ export default function SearchBar({ onSearch }) {
         },
         (error) => {
           console.error("Error getting location:", error);
-          alert("Joylashuvni aniqlashda xatolik yuz berdi");
+          alert("Error getting location");
         }
       );
     } else {
-      alert("Brauzeringiz geolocation qo'llab-quvvatlamaydi");
+      alert("Your browser does not support geolocation");
     }
   };
 
@@ -55,7 +55,7 @@ export default function SearchBar({ onSearch }) {
           </svg>
 
           <input
-            type="search"
+            type="text"
             className="input"
             placeholder="Search City"
             value={city}
@@ -75,12 +75,7 @@ export default function SearchBar({ onSearch }) {
         </div>
 
       </form>
-
-      {currentLocation && (
-        <div className="location-info glass-card" style={{ marginTop: '1rem', padding: '0.5rem 1rem', fontSize: '0.9rem' }}>
-          📍 Joriy joylashuv: {currentLocation.latitude.toFixed(4)}, {currentLocation.longitude.toFixed(4)}
-        </div>
-      )}
     </div>
   );
 }
+

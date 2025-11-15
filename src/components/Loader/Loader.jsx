@@ -5,7 +5,7 @@ const Loader = () => {
   return (
       <div className="loader">
         <div className="spinner"></div>
-        <p className="loading-text">Ob-havo ma'lumotlari yuklanmoqda...</p>
+        <p className="loading-text">Loading weather data...</p>
       </div>
   );
 };

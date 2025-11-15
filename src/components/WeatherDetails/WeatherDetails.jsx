@@ -4,8 +4,8 @@ import './WeatherDetails.css';
 const WeatherDetails = ({ weather }) => {
   if (!weather) return null;
 
-  const sunrise = new Date(weather.sys.sunrise * 1000).toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' });
-  const sunset = new Date(weather.sys.sunset * 1000).toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' });
+  const sunrise = new Date(weather.sys.sunrise * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  const sunset = new Date(weather.sys.sunset * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
 
   const cards = [
     { className: "map-card", title: "Map", content: (

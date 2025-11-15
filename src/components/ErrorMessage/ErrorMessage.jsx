@@ -6,11 +6,11 @@ function ErrorMessage({ message, onRetry }) {
     <div className="error-message">
       <div className="error-content">
         <div className="error-icon">⚠️</div>
-        <h3 className="error-title">Xatolik yuz berdi</h3>
-        <p className="error-text">{message || "Ma'lumotlarni yuklashda xatolik yuz berdi"}</p>
+        <h3 className="error-title">An error occurred</h3>
+        <p className="error-text">{message || "Error loading data"}</p>
         {onRetry && (
           <button className="retry-btn" onClick={onRetry}>
-            Qayta urinib ko'ring
+            Try Again
           </button>
         )}
       </div>

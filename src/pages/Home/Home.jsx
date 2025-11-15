@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import useWeather from "../../hooks/useWeather";
-import Header from "../../components/Header/Header";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
 import ForecastList from "../../components/ForecastList/ForecastList";
 import DailyForecast from "../../components/DailyForecast/DailyForecast";
 import RightPanel from "../../components/RightPanel/RightPanel";
-import Footer from "../../components/Footer/Footer";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SearchBar from "../../components/SearchBar/SearchBar";
@@ -67,11 +65,15 @@ export default function Home() {
     });
   };
 
+  const handleClearAllCities = () => {
+    setSearchedCities([]);
+    localStorage.removeItem('searchedCities');
+  };
+
   return (
     <>
-      <Header />
       <div className="home">
-        {sidebarOpen && <LeftSidebar onSearch={handleSearch} searchedCities={searchedCities} onCityClick={handleCityClick} onDeleteCity={handleDeleteCity} />}
+        {sidebarOpen && <LeftSidebar onSearch={handleSearch} searchedCities={searchedCities} onCityClick={handleCityClick} onDeleteCity={handleDeleteCity} onClearAllCities={handleClearAllCities} />}
         <main className="main-content">
           <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
             {sidebarOpen ? '◀' : '▶'}
@@ -101,7 +103,6 @@ export default function Home() {
         )}
         </main>
       </div>
-      <Footer />
     </>
   );
 }

@@ -1,18 +1,31 @@
 .footer {
+  width: 100%;
+  background-color: #0f172a; /* chuqur fon */
+  color: #cbd5e1; /* yumshoq oq rang matn */
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
   position: fixed;
   bottom: 0;
   left: 0;
-  right: 0;
-  padding: 1rem;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.9rem;
-  background: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 10;
 }
 
-.footer p {
+.footer__container {
+  max-width: 1200px;
+  width: 90%;
+  text-align: center;
+}
+
+.footer__text {
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 0.8rem 0;
+    font-size: 0.85rem;
+  }
 }

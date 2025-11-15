@@ -1,9 +1,13 @@
 .left-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 300px;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 2rem;
   height: 100vh;
-  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 2rem;
+  z-index: 10;
+  backdrop-filter: blur(10px);
 }
 
 .sidebar-content h2 {
@@ -26,18 +30,48 @@
 }
 
 .searched-city-item {
-  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
   margin-bottom: 0.5rem;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.city-info {
+  flex: 1;
+}
+
+.city-info h4 {
+  margin: 0;
+  font-size: 1rem;
   font-weight: 500;
 }
 
-.searched-city-item:hover {
-  background: rgba(255, 255, 255, 0.2);
+.city-info p {
+  margin: 0.25rem 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.weather-icon {
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.city-temp {
+  text-align: right;
+}
+
+.temp-main {
+  font-size: 1.2rem;
+  font-weight: 300;
 }
 
 .no-searches {

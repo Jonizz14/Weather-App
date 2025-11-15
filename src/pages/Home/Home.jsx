@@ -14,21 +14,40 @@ import "./Home.css";
 export default function Home() {
   const { weather, forecast, loading, error, getWeather } = useWeather();
   const [searchedCities, setSearchedCities] = useState([]);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   // Load searched cities from localStorage on mount
   React.useEffect(() => {
     const stored = localStorage.getItem('searchedCities');
     if (stored) {
-      setSearchedCities(JSON.parse(stored));
+      const parsed = JSON.parse(stored);
+      // Ensure each item has the correct structure
+      const formatted = parsed.map(item => typeof item === 'string' ? { name: item, weather: null, forecast: null } : item);
+      setSearchedCities(formatted);
     }
   }, []);
+
+  // Update weather data for searched cities
+  React.useEffect(() => {
+    if (weather) {
+      setSearchedCities(prev => {
+        const updated = prev.map(city =>
+          city.name.toLowerCase() === weather.name.toLowerCase()
+            ? { ...city, weather, forecast }
+            : city
+        );
+        localStorage.setItem('searchedCities', JSON.stringify(updated));
+        return updated;
+      });
+    }
+  }, [weather, forecast]);
 
   const handleSearch = async (city) => {
     await getWeather(city);
     // Add to searched cities
     setSearchedCities(prev => {
-      const filtered = prev.filter(c => c.toLowerCase() !== city.toLowerCase());
-      const updated = [city, ...filtered].slice(0, 20); // Keep only last 20
+      const filtered = prev.filter(c => c.name.toLowerCase() !== city.toLowerCase());
+      const updated = [{ name: city, weather: null, forecast: null }, ...filtered].slice(0, 20); // Keep only last 20
       localStorage.setItem('searchedCities', JSON.stringify(updated));
       return updated;
     });
@@ -40,9 +59,13 @@ export default function Home() {
   };
 
   return (
-    <div className="home">
-      <LeftSidebar onSearch={handleSearch} searchedCities={searchedCities} onCityClick={handleCityClick} />
-      <main className="main-content">
+    <>
+      <div className="home">
+        {sidebarOpen && <LeftSidebar onSearch={handleSearch} searchedCities={searchedCities} onCityClick={handleCityClick} />}
+        <main className="main-content">
+          <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
+            {sidebarOpen ? '◀' : '▶'}
+          </button>
 
         {loading && <Loader />}
         {error && <ErrorMessage message={error} onRetry={() => getWeather("")} />}
@@ -66,8 +89,9 @@ export default function Home() {
             </section>
           </>
         )}
-      </main>
+        </main>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }

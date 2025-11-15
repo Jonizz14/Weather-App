@@ -57,7 +57,7 @@ export default function SearchBar({ onSearch }) {
           <input
             type="search"
             className="input"
-            placeholder="Shahar nomini kiriting yoki joylashuvni aniqlang..."
+            placeholder="Search City"
             value={city}
             onChange={handleInputChange}
           />

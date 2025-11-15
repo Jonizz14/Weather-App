@@ -31,16 +31,16 @@ export default function ForecastList({ forecast, weather }) {
   const sunriseTime = weather ? new Date(weather.sys.sunrise * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }) : '07:12';
 
   return (
-    <div className="forecast-list">
+    <div className="forecast-list glass-card">
       <div className="hourly-forecast">
-        {forecast.list.slice(0, 8).map((item, index) => {
+        {forecast.list.slice(0, 12).map((item, index) => {
           const time = formatTime(item.dt_txt);
           const isSunrise = time === sunriseTime;
           return (
             <div key={index} className={`forecast-item ${isSunrise ? 'sunrise' : ''}`}>
               <p className="time">{time}</p>
               <div className="weather-icon">
-                {isSunrise ? <ReactAnimatedWeather icon="CLEAR_DAY" color="#FFD700" size={30} animate={true} /> : getWeatherIcon(item.weather[0].icon)}
+                {isSunrise ? <ReactAnimatedWeather icon="CLEAR_DAY" color="#FFD700" size={24} animate={true} /> : getWeatherIcon(item.weather[0].icon)}
               </div>
               <span className="temp">{Math.round(item.main.temp)}°</span>
             </div>

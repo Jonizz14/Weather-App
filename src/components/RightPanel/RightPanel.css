@@ -1,256 +1,152 @@
-.right-panel {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  height: fit-content;
-}
-
 .weather-card {
-  aspect-ratio: 1;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  border-radius: 16px;
-  padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  position: relative;
+  text-align: center;
+  aspect-ratio: 1;
+  min-height: 150px;
+  padding: 1rem;
+  color: white;
 }
 
-.weather-card .card-icon {
-  font-size: 1.5rem;
+.map-widget {
+  grid-column: span 2;
+  grid-row: span 2;
+  aspect-ratio: auto;
+  min-height: 300px;
+  padding: 0;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1rem 0.5rem 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.map-info {
+  padding: 0.5rem 1rem 1rem 1rem;
+  text-align: center;
+}
+
+.city-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 0.25rem;
 }
 
-.weather-card h4 {
-  margin: 0 0 0.25rem 0;
+.coordinates {
   font-size: 0.8rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Courier New', monospace;
 }
 
-/* Map Card */
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.weather-card h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.weather-card .uv-value,
+.weather-card .sun-value,
+.weather-card .moon-value,
+.weather-card .precip-value,
+.weather-card .humidity-value,
+.weather-card .wind-speed,
+.weather-card .visibility-value,
+.weather-card .pressure-value,
+.weather-card .feels-temp {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-top: 0.25rem;
+}
+
+.dew-point,
+.wind-direction {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.25rem;
+}
+
 .map-display {
-  position: relative;
   width: 100%;
   height: 60px;
-  background: linear-gradient(135deg, #1a365d, #2d3748);
+  background: linear-gradient(135deg, rgba(100, 149, 237, 0.3), rgba(70, 130, 180, 0.3));
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 0.5rem;
+  position: relative;
 }
 
 .temperature-marker {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.9);
-  color: #1a365d;
-  padding: 0.25rem 0.5rem;
-  border-radius: 12px;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 500;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.temperature-marker::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid rgba(255, 255, 255, 0.9);
-}
-
-/* UV Card */
-.uv-gauge {
-  display: flex;
-  justify-content: center;
-}
-
-.gauge-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, #ffeb3b 0deg, #ffc107 90deg, #ff9800 180deg, #f44336 270deg, #9c27b0 360deg);
+.temp-comparison {
   display: flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.gauge-circle::before {
-  content: '';
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
-}
-
-.uv-value {
-  position: relative;
-  z-index: 1;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-/* Sunrise Card */
-.sun-times {
-  display: flex;
-  justify-content: space-around;
-}
-
-.sun-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.sun-item .icon {
-  font-size: 1.5rem;
-}
-
-/* Moon Card */
-.moon-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.moon-icon {
-  font-size: 2rem;
-}
-
-/* Card values */
-.precip-value,
-.humidity-value,
-.visibility-value,
-.feels-temp,
-.wind-speed {
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: #ffffff;
-  margin: 0.25rem 0;
-}
-
-.uv-value,
-.pressure-gauge span {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #ffffff;
-}
-
-.dew-point {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.7);
+  gap: 0.25rem;
   margin-top: 0.25rem;
 }
 
-/* Wind Card */
-.wind-compass {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0.5rem;
-}
-
-.compass-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.wind-direction {
-  font-size: 1.5rem;
-}
-
-.wind-speed {
-  font-size: 1.1rem;
-}
-
-/* Pressure Card */
-.pressure-gauge {
-  display: flex;
-  justify-content: center;
-}
-
-.gauge-semi {
-  width: 100px;
-  height: 50px;
-  background: conic-gradient(from 180deg, #2196f3 0deg, #21cbf3 180deg);
-  border-radius: 50px 50px 0 0;
-  display: flex;
-  align-items: end;
-  justify-content: center;
-  padding-bottom: 0.5rem;
-  color: #000;
-  font-weight: 600;
-}
-
-/* Temperature Chart Card */
-.temp-chart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.chart-bar {
-  position: relative;
-  width: 20px;
-  height: 100px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-}
-
 .current-temp {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: linear-gradient(180deg, #ff6b6b, #ff4757);
-  border-radius: 10px;
-  transition: height 0.5s ease;
+  font-size: 1.2rem;
+  font-weight: 300;
 }
 
-.average-temp {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: rgba(59, 130, 246, 0.5);
-  border-radius: 10px;
+.vs-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.chart-labels {
-  display: flex;
-  justify-content: space-between;
-  width: 100px;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.8);
+.avg-temp {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-@media (max-width: 1200px) {
-  .right-panel {
-    width: 300px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .weather-card {
+    min-height: 120px;
+    padding: 0.75rem;
+  }
+
+  .card-icon {
+    font-size: 1.5rem;
+  }
+
+  .weather-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .weather-card .uv-value,
+  .weather-card .sun-value,
+  .weather-card .moon-value,
+  .weather-card .precip-value,
+  .weather-card .humidity-value,
+  .weather-card .wind-speed,
+  .weather-card .visibility-value,
+  .weather-card .pressure-value,
+  .weather-card .feels-temp {
+    font-size: 1rem;
   }
 }

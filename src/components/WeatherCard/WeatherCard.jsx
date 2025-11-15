@@ -34,14 +34,21 @@ export default function WeatherCard({ data }) {
   };
 
   return (
-    <div className="weather-card">
+    <div className="weather-card glass-card">
       <div className="weather-main">
+        <div className="location-header">
+          <div className="location">{data.name}, {data.sys.country}</div>
+          <div className="location-pin">📍</div>
+        </div>
         <div className="weather-icon">{getWeatherIcon(data.weather[0].icon)}</div>
-        <div className="weather-info">
-          <div className="temperature">{Math.round(data.main.temp)}°</div>
-          <div className="location">{data.name}</div>
-          <div className="condition">{data.weather[0].description}</div>
-          <div className="high-low">H:{Math.round(data.main.temp_max)}° L:{Math.round(data.main.temp_min)}°</div>
+        <div className="temperature">{Math.round(data.main.temp)}°</div>
+        <div className="condition">{data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1)}</div>
+        <div className="high-low">
+          <span className="high">H:{Math.round(data.main.temp_max)}°</span>
+          <span className="low">L:{Math.round(data.main.temp_min)}°</span>
+        </div>
+        <div className="coordinates">
+          📍 {data.coord.lat.toFixed(4)}, {data.coord.lon.toFixed(4)}
         </div>
       </div>
     </div>

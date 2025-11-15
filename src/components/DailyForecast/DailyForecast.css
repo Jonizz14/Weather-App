@@ -1,84 +1,61 @@
 .daily-forecast {
   margin-top: 2rem;
-  padding: 0 1rem;
 }
 
-.daily-list {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(50px);
-  border-radius: 32px;
-  padding: 1rem;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.daily-item {
+.forecast-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
 }
 
-.daily-item:last-child {
-  border-bottom: none;
+.forecast-header h3 {
+  color: white;
+  margin: 0;
 }
 
-.daily-item .day {
-  font-weight: 600;
-  color: #ffffff;
-  flex: 1;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.temp-bars {
+.forecast-list {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 0.25rem;
-  flex: 2;
+  gap: 0.5rem;
 }
 
-.temp-bar {
-  position: relative;
-  width: 100px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
+.forecast-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: background 0.3s ease;
 }
 
-.bar-fill {
-  position: absolute;
-  height: 100%;
-  background: linear-gradient(90deg, #74b9ff, #ff6b6b);
-  border-radius: 2px;
+.forecast-item:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
-.temp-labels {
+.day-name {
+  font-weight: 500;
+  color: white;
+  min-width: 80px;
+}
+
+.weather-icon {
+  font-size: 1.5rem;
+  margin: 0 1rem;
+}
+
+.temp-range {
   display: flex;
   gap: 0.5rem;
-  font-size: 0.9rem;
+  margin-left: auto;
 }
 
-.temp-labels .high {
-  font-weight: 700;
-  color: #ff6b6b;
+.temp-high {
+  color: white;
+  font-weight: 500;
 }
 
-.temp-labels .low {
-  color: #74b9ff;
-}
-
-@media (max-width: 768px) {
-  .daily-forecast {
-    padding: 0 0.5rem;
-  }
-
-  .daily-list {
-    padding: 0.75rem;
-  }
-
-  .daily-item {
-    padding: 0.5rem 0;
-  }
+.temp-low {
+  color: rgba(255, 255, 255, 0.6);
 }

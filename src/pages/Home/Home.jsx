@@ -42,18 +42,34 @@ export default function Home() {
 
   return (
     <div className="home">
-      <LeftSidebar onSearch={handleSearch} savedCities={savedCities} onCityClick={handleCityClick} />
       <main className="main-content">
-        <div className="weather-layout">
-          <div className="left-column">
-            {loading && <Loader />}
-            {error && <ErrorMessage message={error} onRetry={() => getWeather("")} />}
-            {weather && <WeatherCard data={weather} />}
-            {forecast && <ForecastList forecast={forecast} weather={weather} />}
-            {forecast && <DailyForecast forecast={forecast} />}
-          </div>
-          {weather && <RightPanel weather={weather} />}
-        </div>
+        {/* Prominent Search Bar */}
+        <section className="search-section">
+          <SearchBar onSearch={handleSearch} />
+        </section>
+
+        {loading && <Loader />}
+        {error && <ErrorMessage message={error} onRetry={() => getWeather("")} />}
+        {weather && (
+          <>
+            {/* Top Section - Main Weather Overview */}
+            <section className="weather-overview">
+              <WeatherCard data={weather} />
+            </section>
+
+            {/* Middle Section - Hourly Forecast */}
+            {forecast && (
+              <section className="hourly-forecast-section">
+                <ForecastList forecast={forecast} weather={weather} />
+              </section>
+            )}
+
+            {/* Bottom Section - Detail Widgets Grid */}
+            <section className="detail-widgets">
+              <RightPanel weather={weather} />
+            </section>
+          </>
+        )}
       </main>
       <Footer />
     </div>

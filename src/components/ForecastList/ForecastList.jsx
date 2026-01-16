@@ -31,7 +31,7 @@ export default function ForecastList({ forecast, weather }) {
   const sunriseTime = weather ? new Date(weather.sys.sunrise * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }) : '07:12';
 
   return (
-    <div className="forecast-list glass-card">
+    <div className="forecast-list">
       <div className="hourly-forecast">
         {forecast.list.slice(0, 12).map((item, index) => {
           const time = formatTime(item.dt_txt);

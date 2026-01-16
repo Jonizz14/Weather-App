@@ -1,149 +1,53 @@
 .forecast-list {
   width: 100%;
   overflow-x: auto;
-  padding: 1rem;
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: center; /* Center if items don't overflow */
 }
 
 .hourly-forecast {
   display: flex;
-  gap: 0.75rem;
-  padding: 0 1rem;
+  gap: 2rem;
+  padding: 1rem;
   min-width: max-content;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
 }
 
 .forecast-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  padding: 1rem 0.75rem;
-  min-width: 80px;
+  gap: 0.75rem;
+  min-width: 50px;
   text-align: center;
-  transition: all 0.3s ease;
-  color: white;
-  scroll-snap-align: start;
+  transition: transform 0.2s ease;
 }
 
-.time {
-  font-size: 0.9rem;
-  font-weight: 400;
-  margin: 0 0 0.5rem 0;
-  color: rgba(255, 255, 255, 0.8);
+.forecast-item:hover {
+  transform: translateY(-2px);
 }
 
-.weather-icon {
-  margin: 0.25rem 0;
-  display: flex;
-  justify-content: center;
+.forecast-item .time {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
 }
 
-.temp {
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: white;
-  margin-top: 0.25rem;
+.forecast-item .temp {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
 }
 
-/* Sunrise special styling */
-.sunrise {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 215, 0, 0.2),
-    rgba(255, 140, 0, 0.1)
-  );
-  border: 1px solid rgba(255, 215, 0, 0.3);
+.forecast-item .weather-icon {
+    height: 30px;
+    display: flex;
+    align-items: center;
 }
-
-.sunrise .time {
-  color: #ffd700;
-  font-weight: 500;
-}
-
-.sunrise .temp {
-  color: #ffd700;
-}
-
-/* Scrollbar styling */
-.forecast-list::-webkit-scrollbar {
-  height: 4px;
-}
-
-.forecast-list::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
-}
-
-.forecast-list::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 2px;
-}
-
-/* Responsive media so'rovlariga qo'shimcha kiritish kerak */
 
 @media (max-width: 768px) {
-  .forecast-item {
-    min-width: 70px;
-    padding: 0.75rem 0.5rem;
-  }
-
-  .time {
-    font-size: 1rem;
-  }
-
-  .temp {
-    font-size: 1.2rem;
-  }
-
-  /* Ikonka o'lchamini kichraytirish (React Animated Weather komponenti uchun) */
-  .weather-icon svg {
-    width: 36px !important;
-    height: 36px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .forecast-item {
-    min-width: 60px;
-    padding: 0.5rem 0.25rem;
-  }
-
-  .time {
-    font-size: 0.9rem;
-  }
-
-  .temp {
-    font-size: 1.1rem;
-  }
-
-  /* Ikonka o'lchamini yana kichraytirish */
-  .weather-icon svg {
-    width: 32px !important;
-    height: 32px !important;
-  }
-}
-
-@media (max-width: 360px) {
-  .forecast-item {
-    min-width: 65px;
-    padding: 0.6rem 0.3rem;
-  }
-
-  .time {
-    font-size: 1rem;
-  }
-
-  .temp {
-    font-size: 1.3rem;
-  }
-
-  .weather-icon svg {
-    width: 40px !important;
-    height: 40px !important;
-  }
+    .hourly-forecast {
+        gap: 1.5rem;
+    }
 }

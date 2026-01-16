@@ -1,119 +1,49 @@
-/* === Asosiy (Desktop) Uslublar === */
 .error-message {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  color: white;
-  text-align: center;
   width: 100%;
-  min-height: 40vh; /* Kontent kam bo'lganda ham ekranda joy egallaydi */
 }
 
 .error-content {
-  /* Xatolikni alohida "kartochka" qilib ko'rsatish */
-  background: rgba(255, 107, 107, 0.1); /* Xavfni bildiruvchi qizil fon */
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 107, 107, 0.2);
+  background: rgba(255, 69, 58, 0.1);
+  border: 1px solid rgba(255, 69, 58, 0.2);
   padding: 2rem;
   border-radius: 16px;
-  max-width: 500px; /* Kartochka juda kengayib ketmaydi */
+  max-width: 400px;
+  text-align: center;
 }
 
 .error-icon {
-  font-size: 3rem; /* Ikonkani kattalashtirdik */
+  font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
 .error-title {
-  /* JS'dagi H3 va .error-title ga mos keladi */
-  margin-bottom: 1rem;
-  color: #ff6b6b; /* Xato rangi */
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ff453a;
+  margin-bottom: 0.5rem;
 }
 
 .error-text {
-  /* JS'dagi P va .error-text ga mos keladi */
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
 }
 
 .retry-btn {
-  /* JS'dagi .retry-btn ga mos keladi */
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+  background: var(--text-main);
+  color: var(--primary-bg);
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1rem;
+  border-radius: 12px;
   font-weight: 600;
+  font-size: 0.875rem;
+  transition: var(--transition);
 }
 
 .retry-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* === 1. Planshet (Tablet) uchun Responsive === */
-@media (max-width: 768px) {
-  .error-message {
-    padding: 1.5rem;
-    min-height: 30vh;
-  }
-
-  .error-content {
-    padding: 1.5rem;
-  }
-
-  .error-title {
-    margin-bottom: 0.75rem;
-    font-size: 1.3rem; /* o'lchamni biroz kichraytiramiz */
-  }
-
-  .error-text {
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-  }
-
-  .retry-btn {
-    padding: 0.6rem 1.2rem;
-  }
-}
-
-/* === 2. Mobil Telefon (Mobile) uchun Responsive === */
-@media (max-width: 480px) {
-  .error-message {
-    padding: 1rem;
-    min-height: auto; /* Avtomatik balandlik */
-  }
-
-  /* Kichik ekranlarda kartochka fonini olib tashlaymiz */
-  .error-content {
-    background: none;
-    backdrop-filter: none;
-    border: none;
-    padding: 1rem 0;
-  }
-
-  .error-icon {
-    font-size: 2.5rem;
-  }
-
-  .error-title {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-  }
-
-  .error-text {
-    margin-bottom: 0.75rem;
-    font-size: 0.9rem;
-  }
-
-  .retry-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
+  opacity: 0.9;
+  transform: translateY(-1px);
 }

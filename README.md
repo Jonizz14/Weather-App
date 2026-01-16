@@ -30,6 +30,9 @@ Bu loyiha **zamonaviy ob-havo ilovasi** bo'lib, React texnologiyasi asosida quri
 - 🗺️ Interaktiv Google Maps integratsiyasi
 - 🔍 Dunyo bo'ylab shahar qidiruvi
 - 📱 To'liq responsive dizayn
+- 🌈 **Dinamik Mavzular** - Ob-havoga qarab o'zgaruvchi interfeys
+- ❄️ **Ob-havo Effektlari** - Yomg'ir, qor va bulut animatsiyalari
+- 🍎 **Premium Glassmorphism** - Apple-style interaktiv dizayn
 
 </div>
 
@@ -41,7 +44,8 @@ Bu loyiha **zamonaviy ob-havo ilovasi** bo'lib, React texnologiyasi asosida quri
 - ✅ **Qulay Interfeys** - Foydalanuvchi-do'st dizayn
 - ✅ **Tez Ishlash** - Vite bilan optimallashtirilgan
 - ✅ **Mobil Mos** - Barcha qurilmalarda mukammal
-- ✅ **Interaktiv** - Xarita va animatsiyalar
+- ✅ **Dinamik Atmosfera** - Yomg'ir va qor effektlari
+- ✅ **Premium Interaktiv** - MacOS-style hover effektlari
 
 ---
 
@@ -55,16 +59,18 @@ Bu loyiha **zamonaviy ob-havo ilovasi** bo'lib, React texnologiyasi asosida quri
 | 📅 **5 Kunlik Prognoz** | Harorat, namlik, shamol tezligi |
 | 🗺️ **Google Maps** | Interaktiv xarita integratsiyasi |
 | 🔍 **Qidiruv** | Shaharlar bo'yicha tez qidiruv |
-| 📱 **Responsive** | Desktop, tablet, mobil mos |
+| 🌡️ **Dinamik Mavzu** | Har bir ob-havo holati uchun alohida dizayn |
+| 🌨️ **Vizual Effektlar** | Reallikni aks ettiruvchi yomg'ir va qor |
 
 ### 🎨 Dizayn Xususiyatlari
 
 - 🎭 **Zamonaviy UI/UX** - Minimal va chiroyli dizayn
-- 🌈 **CSS Animatsiyalar** - Smooth o'tishlar va effektlar
-- 📱 **Mobile-First** - Avval mobil, keyin desktop
-- 🎯 **Intuitive Navigation** - Oson va tushunarli
-- ⚡ **Fast Loading** - Tez yuklanish uchun optimizatsiya
-- 📱 **Responsive Components** - Home, Forecast, Map va barcha komponentlar responsive
+- 🌈 **MacOS Style Interaction** - Kartalar uchun smart hover effektlari
+- 🧊 **Ultra Glassmorphism** - Shaffof va premium ko'rinish
+- 📱 **Mobile-First** - Avvala mobil, keyin desktop
+- 🎯 **Smooth Transitions** - Silliq va professional animatsiyalar
+- ⚡ **GPU Accelerated** - Yuqori unumdorlik bilan ishlovchi animatsiyalar
+- 🌍 **Static Background** - Sokin va qimirlamaydigan fon tizimi
 
 ---
 

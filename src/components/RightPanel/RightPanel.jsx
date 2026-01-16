@@ -10,77 +10,141 @@ const RightPanel = ({ weather }) => {
   return (
     <>
 
-      <div className="weather-card glass-card">
-        <div className="card-icon">☀️</div>
-        <h4>UV Index</h4>
-        <div className="uv-value">Low</div>
-      </div>
-
-      <div className="weather-card glass-card">
-        <div className="card-icon">🌅</div>
-        <h4>Sunrise</h4>
-        <div className="sun-value">{sunrise}</div>
-      </div>
-
-      <div className="weather-card glass-card">
-        <div className="card-icon">🌇</div>
-        <h4>Sunset</h4>
-        <div className="sun-value">{sunset}</div>
-      </div>
-
-      <div className="weather-card glass-card">
-        <div className="card-icon">🌙</div>
-        <h4>Moon Phase</h4>
-        <div className="moon-value">Waning</div>
-      </div>
-
-      <div className="weather-card glass-card">
-        <div className="card-icon">🌧️</div>
-        <h4>Precipitation</h4>
-        <div className="precip-value">0 mm</div>
-      </div>
-
-      <div className="weather-card glass-card">
-        <div className="card-icon">💧</div>
-        <h4>Humidity</h4>
-        <div className="humidity-value">{weather.main.humidity}%</div>
-        <div className="dew-point">Dew point 15°</div>
-      </div>
-
-      <div className="weather-card glass-card">
-        <div className="card-icon">💨</div>
-        <h4>Wind</h4>
-        <div className="wind-speed">{weather.wind.speed} km/h</div>
-        <div className="wind-direction">NW</div>
-      </div>
-
-      <div className="weather-card glass-card">
-        <div className="card-icon">👁️</div>
-        <h4>Visibility</h4>
-        <div className="visibility-value">{(weather.visibility / 1000).toFixed(0)} km</div>
-      </div>
-
-      <div className="weather-card glass-card">
-        <div className="card-icon">📊</div>
-        <h4>Pressure</h4>
-        <div className="pressure-value">{weather.main.pressure} hPa</div>
-      </div>
-
-      <div className="weather-card glass-card">
-        <div className="card-icon">🌡️</div>
-        <h4>Feels Like</h4>
-        <div className="feels-temp">{Math.round(weather.main.feels_like)}°</div>
-      </div>
-
-      <div className="weather-card glass-card">
-        <div className="card-icon">📈</div>
-        <h4>Temp vs Avg</h4>
-        <div className="temp-comparison">
-          <span className="current-temp">{Math.round(weather.main.temp)}°</span>
-          <span className="vs-text">vs</span>
-          <span className="avg-temp">22°</span>
+      <div className="info-card glass-card">
+        <div className="card-inner">
+          <div className="card-left">
+            <h4>☀️ UV Index</h4>
+            <div className="uv-value">Low</div>
+          </div>
+          <div className="card-right">
+            <div className="extra-info">
+              <span className="label">Next 2h</span>
+              <span className="val">Moderate</span>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div className="info-card glass-card">
+        <div className="card-inner">
+          <div className="card-left">
+            <h4>🌅 Sunrise</h4>
+            <div className="sun-value">{sunrise}</div>
+          </div>
+          <div className="card-right">
+            <div className="extra-info">
+              <span className="label">Daylight</span>
+              <span className="val">10h 24m</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="info-card glass-card">
+        <div className="card-inner">
+          <div className="card-left">
+            <h4>🌇 Sunset</h4>
+            <div className="sun-value">{sunset}</div>
+          </div>
+          <div className="card-right">
+            <div className="extra-info">
+              <span className="label">Golden Hour</span>
+              <span className="val">16:45</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="info-card glass-card">
+        <div className="card-inner">
+          <div className="card-left">
+            <h4>🌙 Moon</h4>
+            <div className="moon-value">Waning</div>
+          </div>
+          <div className="card-right">
+            <div className="extra-info">
+              <span className="label">Illuminated</span>
+              <span className="val">42%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="info-card glass-card">
+        <div className="card-inner">
+          <div className="card-left">
+            <h4>💧 Humidity</h4>
+            <div className="humidity-value">{weather.main.humidity}%</div>
+          </div>
+          <div className="card-right">
+            <div className="extra-info">
+              <span className="label">Dew Point</span>
+              <span className="val">{Math.round(weather.main.temp - 5)}°</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="info-card glass-card">
+        <div className="card-inner">
+          <div className="card-left">
+            <h4>💨 Wind</h4>
+            <div className="wind-speed">{weather.wind.speed} km/h</div>
+          </div>
+          <div className="card-right">
+            <div className="extra-info">
+              <span className="label">Gusts</span>
+              <span className="val">{(weather.wind.speed * 1.5).toFixed(1)} km/h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="info-card glass-card">
+        <div className="card-inner">
+          <div className="card-left">
+            <h4>👁️ Visibility</h4>
+            <div className="visibility-value">{(weather.visibility / 1000).toFixed(0)} km</div>
+          </div>
+          <div className="card-right">
+            <div className="extra-info">
+              <span className="label">Air Quality</span>
+              <span className="val">Good</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="info-card glass-card">
+        <div className="card-inner">
+          <div className="card-left">
+            <h4>📊 Pressure</h4>
+            <div className="pressure-value">{weather.main.pressure} hPa</div>
+          </div>
+          <div className="card-right">
+            <div className="extra-info">
+              <span className="label">Trend</span>
+              <span className="val">Falling</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="info-card glass-card">
+        <div className="card-inner">
+          <div className="card-left">
+            <h4>🌡️ Feels Like</h4>
+            <div className="feels-temp">{Math.round(weather.main.feels_like)}°</div>
+          </div>
+          <div className="card-right">
+            <div className="extra-info">
+              <span className="label">Variation</span>
+              <span className="val">{(weather.main.feels_like - weather.main.temp).toFixed(1)}°</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     </>
   );

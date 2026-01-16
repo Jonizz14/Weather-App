@@ -13,7 +13,6 @@ export default function Home() {
   const { weather, forecast, loading, error, locationError, getWeather, getWeatherByCoords, retryLocation } = useWeather();
   const [searchedCities, setSearchedCities] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 1366);
-  const [isDay, setIsDay] = useState(new Date().getHours() >= 6 && new Date().getHours() < 18);
 
   // Load searched cities from localStorage on mount
   React.useEffect(() => {
@@ -36,17 +35,6 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Update day/night theme based on current time
-  React.useEffect(() => {
-    const updateTheme = () => {
-      const hour = new Date().getHours();
-      setIsDay(hour >= 6 && hour < 18);
-    };
-
-    updateTheme(); // Initial check
-    const interval = setInterval(updateTheme, 60000); // Update every minute
-    return () => clearInterval(interval);
-  }, []);
 
   // Update weather data for searched cities
   React.useEffect(() => {
@@ -92,11 +80,38 @@ export default function Home() {
     localStorage.removeItem('searchedCities');
   };
 
+  const getWeatherTheme = () => {
+    if (!weather) return "";
+    const icon = weather.weather[0].icon;
+    const isDay = icon.includes("d");
+    const id = weather.weather[0].id;
+
+    let theme = isDay ? "theme-day" : "theme-night";
+    
+    if (id >= 200 && id < 600) theme += " theme-rain";
+    else if (id >= 600 && id < 700) theme += " theme-snow";
+    else if (id === 800) theme += " theme-clear";
+    else theme += " theme-clouds";
+
+    return theme;
+  };
+
+  const weatherTheme = getWeatherTheme();
+
   return (
     <>
-      <div className={`home ${!sidebarOpen ? 'sidebar-closed' : ''} ${isDay ? 'day-theme' : 'night-theme'}`}>
-        <LeftSidebar className={sidebarOpen ? "open" : ""} onSearch={handleSearch} onLocation={getWeatherByCoords} searchedCities={searchedCities} onCityClick={handleCityClick} onDeleteCity={handleDeleteCity} onClearAllCities={handleClearAllCities} onClose={() => setSidebarOpen(false)} />
-        {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} onTouchStart={() => setSidebarOpen(false)}></div>}
+      <div className={`home ${!sidebarOpen ? 'sidebar-closed' : ''} ${weatherTheme}`}>
+        <LeftSidebar 
+          className={sidebarOpen ? "open" : ""} 
+          onSearch={handleSearch} 
+          onLocation={getWeatherByCoords} 
+          searchedCities={searchedCities} 
+          onCityClick={handleCityClick} 
+          onDeleteCity={handleDeleteCity} 
+          onClearAllCities={handleClearAllCities} 
+          onClose={() => setSidebarOpen(false)} 
+        />
+        <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)}></div>
         <main className="main-content">
            <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
              {sidebarOpen ? '◀' : '▶'}

@@ -1,471 +1,134 @@
 .home {
+  display: flex;
   min-height: 100vh;
+  background-color: var(--primary-bg);
   position: relative;
   overflow-x: hidden;
-  display: flex;
-  overflow-y: auto;
-}
-
-.home::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-attachment: fixed;
-  background-size: 400% 400%;
-  z-index: -1;
-  animation: gradientShift 25s ease infinite;
-  box-shadow: inset 0 0 100px rgba(255, 107, 53, 0.1);
-}
-
-
-.home.night-theme::before {
-  background:
-    radial-gradient(circle at 30% 70%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 70% 30%, rgba(255, 119, 198, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(120, 219, 255, 0.1) 0%, transparent 60%),
-    linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #2c3e50 100%);
-}
-
-.home.day-theme::before {
-  background:
-    radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
-    linear-gradient(135deg,
-      #FF6B35 0%,
-      #F7931E 15%,
-      #D7263D 30%,
-      #C44569 45%,
-      #A0447A 60%,
-      #8E2DE2 75%,
-      #4A00E0 90%,
-      #FF6B35 100%);
-}
-
-.home::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.2) 0%, transparent 50%),
-              radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
 }
 
 .main-content {
-  position: relative;
-  z-index: 1;
+  flex: 1;
   padding: 2rem;
-  padding-top: 20px;
-  padding-left: 420px;
-  padding-bottom: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center; /* Center everything in main content */
   gap: 2rem;
-  min-height: 100vh;
-  transition: padding-left 0.3s ease;
-}
-
-.home.sidebar-closed .main-content {
-  padding-left: 2rem;
-}
-
-.sidebar-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 150;
-  display: none;
+  transition: opacity 0.3s ease;
 }
 
+/* Sidebar Toggle */
 .sidebar-toggle {
   position: fixed;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 150;
-  backdrop-filter: blur(10px);
-}
-
-.home.sidebar-closed .sidebar-toggle {
-  left: 10px;
-}
-
-@media (max-width: 768px) {
-  .sidebar-backdrop {
-    display: block;
-  }
-
-  .sidebar-toggle {
-    top: 20px;
-    left: 20px;
-    transform: none;
-  }
-
-  .home::before {
-    animation-duration: 40s;
-  }
-
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    25% {
-      background-position: 100% 0%;
-    }
-    50% {
-      background-position: 100% 100%;
-    }
-    75% {
-      background-position: 0% 100%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-}
-
-
-.search-section {
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--secondary-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
   display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.search-section .search-bar,
-.mobile-search-section .search-bar {
-  max-width: 600px;
-  width: 100%;
-}
-
-.mobile-search-section {
-  display: none;
-  padding: 1rem 0;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-@media (max-width: 768px) {
-  .mobile-search-section {
-    display: block;
-  }
-}
-
-.weather-overview {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: 300px;
-  animation: fadeInUp 0.8s ease-out;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font-size: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Sections */
+.weather-overview {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .hourly-forecast-section {
   width: 100%;
-  overflow-x: auto;
-  padding: 1rem 0;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 .detail-widgets {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
-  padding: 1rem 0;
-  animation: fadeInUp 0.8s ease-out 0.4s both;
   width: 100%;
 }
 
-@media (max-width: 1366px) {
-  .main-content {
-    padding-left: 2rem;
-  }
-
-  .detail-widgets {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.25rem;
-  }
-
-  .sidebar-toggle {
-    display: block;
-    top: 20px;
-    left: 20px;
-    transform: none;
-  }
-
-  .sidebar-backdrop {
-    display: block;
-  }
-}
-
-@media (max-width: 1024px) {
-  .main-content {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  .detail-widgets {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
-  }
-
-  .weather-overview {
-    min-height: 250px;
-  }
-
-  .hourly-forecast-section {
-    padding: 0.75rem 0;
-  }
-}
-
-@media (max-width: 640px) {
-  .detail-widgets {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-  }
-
-  .main-content {
-    padding: 1rem;
-  }
-
-  .weather-overview {
-    min-height: 220px;
-  }
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  padding: 1.5rem;
-  color: white;
-  transition: all 0.3s ease;
-}
-
-
-@media (max-width: 1366px) {
-  .home {
-    flex-direction: column;
-  }
-
-  .main-content {
-    padding: 1.5rem;
-    padding-left: 2rem;
-  }
-
-  .home.sidebar-closed .main-content {
-    padding-left: 2rem;
-  }
-
-  .weather-overview {
-    min-height: auto;
-    padding: 0;
-    width: 100%;
-  }
-
-  .detail-widgets {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-  }
-
-  .glass-card {
-    padding: 1rem;
-    border-radius: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .weather-overview {
-    min-height: 200px;
-  }
-
-  .detail-widgets {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .hourly-forecast-section {
-    padding: 0.5rem 0;
-  }
-}
-
-@media (max-width: 360px) {
-  .main-content {
-    padding: 0.5rem;
-  }
-
-  .weather-overview {
-    min-height: 180px;
-  }
-
-  .detail-widgets {
-    gap: 0.5rem;
-  }
-
-  .hourly-forecast-section {
-    padding: 0.3rem 0;
-  }
-}
-
-.main-content .loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-
+/* Welcome Message */
 .welcome-message {
+  height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
   text-align: center;
-  color: white;
-  animation: fadeInUp 0.8s ease-out;
+  gap: 1rem;
 }
 
 .welcome-message h1 {
-  font-size: 3rem;
-  font-weight: 300;
-  margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  -webkit-text-fill-color: transparent;
 }
 
 .welcome-message p {
-  font-size: 1.2rem;
-  opacity: 0.8;
-  margin: 0;
-  max-width: 400px;
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  max-width: 460px;
 }
 
-@media (max-width: 1366px) {
-  .welcome-message {
-    min-height: 300px;
-    padding: 2rem 1rem;
+/* Sidebar Backdrop */
+.sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 150;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.home:not(.sidebar-closed) .sidebar-backdrop {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile Search visible on all small screens if needed */
+.mobile-search-section {
+  display: none;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1.5rem;
+    padding-top: 5rem;
   }
 
   .welcome-message h1 {
     font-size: 2.5rem;
   }
 
-  .welcome-message p {
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .welcome-message h1 {
-    font-size: 2rem;
-  }
-
-  .welcome-message p {
-    font-size: 1rem;
-  }
-}
-
-/* === 1440p Monitorlar uchun === */
-@media (min-width: 1440px) {
-  .main-content {
-    padding-left: 440px;
-  }
-
   .detail-widgets {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-/* === 2K Monitorlar uchun === */
-@media (min-width: 2560px) {
-  .main-content {
-    padding-left: 460px;
-  }
-
-  .detail-widgets {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-  }
-
-  .weather-overview {
-    min-height: 400px;
-  }
-}
-
-/* === 4K Monitorlar uchun === */
-@media (min-width: 3840px) {
-  .main-content {
-    padding-left: 560px;
-  }
-
-  .detail-widgets {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-  }
-
-  .weather-overview {
-    min-height: 500px;
-  }
-
-  .welcome-message h1 {
-    font-size: 4rem;
-  }
-
-  .welcome-message p {
-    font-size: 1.5rem;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  25% {
-    background-position: 100% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  75% {
-    background-position: 0% 100%;
-  }
-  100% {
-    background-position: 0% 50%;
+    grid-template-columns: 1fr;
   }
 }

@@ -1,202 +1,95 @@
-.weather-card {
+.info-card {
+  padding: 1.5rem;
+  min-height: 160px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  aspect-ratio: 1;
-  min-height: 150px;
-  padding: 1rem;
-  color: white;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
 }
 
-.weather-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.info-card:hover {
+  transform: scale(1.05); /* Gentle scale up like MacOS */
+  z-index: 50;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  box-shadow: 0 15px 45px rgba(0,0,0,0.4);
 }
 
-
-
-.card-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.weather-card h4 {
-  font-size: 1rem;
-  font-weight: 400;
-  margin: 0.5rem 0;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.weather-card .uv-value,
-.weather-card .sun-value,
-.weather-card .moon-value,
-.weather-card .precip-value,
-.weather-card .humidity-value,
-.weather-card .wind-speed,
-.weather-card .visibility-value,
-.weather-card .pressure-value,
-.weather-card .feels-temp {
-  font-size: 1.2rem;
-  font-weight: 300;
-  margin-top: 0.25rem;
-}
-
-.dew-point,
-.wind-direction {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin-top: 0.25rem;
-}
-
-.map-display {
+.card-inner {
+  display: flex;
   width: 100%;
-  height: 60px;
-  background: linear-gradient(135deg, rgba(100, 149, 237, 0.3), rgba(70, 130, 180, 0.3));
-  border-radius: 8px;
-  display: flex;
+  height: 100%;
   align-items: center;
+  gap: 0;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.info-card:hover .card-left {
+  transform: translateX(-5px); /* Shift left */
+}
+
+/* Right side details */
+.card-right {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 0.5rem;
-  position: relative;
 }
 
-.temperature-marker {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
+.info-card:hover .card-right {
+  width: 120px; /* Reveal right panel */
+  opacity: 1;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  margin-left: 1rem;
 }
 
-.temp-comparison {
+.info-card h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.uv-value, .sun-value, .moon-value, .humidity-value, .wind-speed, .visibility-value, .pressure-value, .feels-temp {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.extra-info {
   display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-top: 0.25rem;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.current-temp {
-  font-size: 1.2rem;
-  font-weight: 300;
+.label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
 }
 
-.vs-text {
+.val {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.avg-temp {
-  font-size: 1.2rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .weather-card {
-    min-height: 120px;
-    padding: 0.75rem;
-  }
-
-  .card-icon {
-    font-size: 1.8rem;
-  }
-
-  .weather-card h4 {
-    font-size: 1rem;
-  }
-
-  .weather-card .uv-value,
-  .weather-card .sun-value,
-  .weather-card .moon-value,
-  .weather-card .precip-value,
-  .weather-card .humidity-value,
-  .weather-card .wind-speed,
-  .weather-card .visibility-value,
-  .weather-card .pressure-value,
-  .weather-card .feels-temp {
-    font-size: 1.1rem;
-  }
+  font-weight: 600;
+  color: var(--text-main);
 }
 
 @media (max-width: 480px) {
-  .weather-card {
-    min-height: 100px;
-    padding: 0.5rem;
-  }
-
-  .card-icon {
-    font-size: 1.5rem;
-  }
-
-  .weather-card h4 {
-    font-size: 1rem;
-  }
-
-  .weather-card .uv-value,
-  .weather-card .sun-value,
-  .weather-card .moon-value,
-  .weather-card .precip-value,
-  .weather-card .humidity-value,
-  .weather-card .wind-speed,
-  .weather-card .visibility-value,
-  .weather-card .pressure-value,
-  .weather-card .feels-temp {
-    font-size: 1.1rem;
-  }
-
-  .dew-point,
-  .wind-direction {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .weather-card {
-    min-height: 110px;
-    padding: 0.6rem;
-  }
-
-  .card-icon {
-    font-size: 2rem;
-  }
-
-  .weather-card h4 {
-    font-size: 1.2rem;
-  }
-
-  .weather-card .uv-value,
-  .weather-card .sun-value,
-  .weather-card .moon-value,
-  .weather-card .precip-value,
-  .weather-card .humidity-value,
-  .weather-card .wind-speed,
-  .weather-card .visibility-value,
-  .weather-card .pressure-value,
-  .weather-card .feels-temp {
-    font-size: 1.3rem;
-  }
-
-  .dew-point,
-  .wind-direction {
-    font-size: 1rem;
-  }
+    .info-card:hover { transform: none; }
+    .info-card:hover .card-right { display: none; }
 }
